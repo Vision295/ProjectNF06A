@@ -1,0 +1,15 @@
+Huffman Coding :
+	https://en.wikipedia.org/wiki/Huffman_coding
+	https://www.geeksforgeeks.org/image-compression-using-huffman-coding/
+	https://huffman.ooz.ie/
+
+The libpng library (to read and create png files) :
+	https://libpng.sourceforge.io/
+	http://www.libpng.org/pub/png/libpng-1.0.3-manual.html
+	https://www.youtube.com/watch?v=GsgSnSG0O0U&ab_channel=OSFM
+
+Installing packages in C ? 
+	https://stackoverflow.com/questions/4737414/how-do-i-install-c-packages-on-windows
+
+Another pack to manage images : 
+	https://homepages.inf.ed.ac.uk/rbf/BOOKS/PHILLIPS/cips2ed.pdf
