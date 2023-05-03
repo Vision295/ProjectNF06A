@@ -6,7 +6,7 @@ screen.title('Project NF06A')
 screen['bg'] = 'green'
 screen.resizable(height=False, width=False)
 
-label = Label(screen, text="testing tkinter", font=("Verdana", 20, "italic"), fg='white', bg='black')
+label = Label(screen, text="testing tkinter", font=("Verdana", 20, "italic"), fg='white', bg='black', justify=LEFT)
 label["text"] = "something new"
 label.pack(padx=50)
 
