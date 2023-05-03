@@ -5,6 +5,7 @@ Huffman Coding :
 
 The libpng library (to read and create png files) :
 	https://libpng.sourceforge.io/
+	http://www.libpng.org/pub/png/libpng-1.4.0-manual.pdf (doc)
 	http://www.libpng.org/pub/png/libpng-1.0.3-manual.html
 	https://www.youtube.com/watch?v=GsgSnSG0O0U&ab_channel=OSFM
 
