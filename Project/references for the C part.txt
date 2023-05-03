@@ -10,3 +10,7 @@ The libpng library (to read and create png files) :
 
 Installing packages in C ? 
 	https://stackoverflow.com/questions/4737414/how-do-i-install-c-packages-on-windows
+
+Another pack to manage images : 
+	https://homepages.inf.ed.ac.uk/rbf/BOOKS/PHILLIPS/cips2ed.pdf
+	
