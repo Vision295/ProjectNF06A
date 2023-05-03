@@ -7,6 +7,9 @@ The libpng library (to read and create png files) :
 	https://libpng.sourceforge.io/
 	http://www.libpng.org/pub/png/libpng-1.0.3-manual.html
 	https://www.youtube.com/watch?v=GsgSnSG0O0U&ab_channel=OSFM
+	
+MagikWand library :
+	https://imagemagick.org/script/magick-wand.php
 
 Installing packages in C ? 
 	https://stackoverflow.com/questions/4737414/how-do-i-install-c-packages-on-windows
