@@ -78,7 +78,7 @@ class Window(Tk):
             # list of labels (list of all buttons which represent a file in path)
             self.lables.clear()
             for i, j in enumerate(self.entries):
-                print(self.current_path)
+
                 # if it is a png image
                 if j.endswith('.png') or j.endswith('.PNG'):
                     self.create_button(j, 'green')
@@ -94,16 +94,19 @@ class Window(Tk):
                 self.area_file_buttons.insert('end','\n')
         
     def back(self):
-        i = 0
-        b = list(self.current_path)
-        a = b.pop()
-        a = b.pop()
+        """function to go back in hierarchy"""
+        # conversion str -> list to manipulate it easier
+        tempList_current_path = list(self.current_path)
+        # pop the first two elements so that a is different from '/'
+        tempValue_tempList = tempList_current_path.pop()
+        tempValue_tempList = tempList_current_path.pop()
+
+        while tempValue_tempList != '/' : tempValue_tempList = tempList_current_path.pop()
+        
+        # conversion lit -> str to get current_path reusable
         self.current_path = ''
-        while a != '/':
-            a = b.pop()
-            i += 1
-        for i in b:
-            self.current_path += i
+        for i in tempList_current_path : self.current_path += i
+        # add a slash for it to be readable
         self.current_path += '/'
         self.open()
 
