@@ -2,6 +2,7 @@ from tkinter import *
 import os
 from PIL import Image
 from PIL import ImageTk
+from pathlib import Path
 
 
 class Window(Tk):
@@ -75,7 +76,12 @@ class Window(Tk):
             - if it is a folder in goes in the folder
         """
         print(self.current_path)
-        # this creates a list of all elements at the path given
+        self.open_directory()
+        self.open_image_png()
+        
+
+    def open_directory(self):
+        """function run in the open function to open specifically a directory"""
         if os.path.isdir(os.path.abspath(self.current_path)):
             self.empty_folder_frame()
             self.entries = os.listdir(self.current_path)
@@ -96,11 +102,14 @@ class Window(Tk):
                 # displays the buttons in scrollable window
                 self.area_file_buttons.window_create('end', window=self.lables[i])
                 self.area_file_buttons.insert('end','\n')
-        
-        elif self.current_path.endswith('.png') or self.current_path.endswith('.PNG'):
+
+    def open_image_png(self):
+        """function run in the open function to open specifically a png image"""
+        if self.current_path.endswith('.png') or self.current_path.endswith('.PNG'):
             # create a new window with the image depending on a fixed size
             self.window_size = 500
             self.image_window = Toplevel(self, height=self.window_size, width=self.window_size)
+            self.image_window.resizable(False, False)
 
             # loads the image in script
             self.image = Image.open(os.path.abspath(self.current_path))
@@ -117,9 +126,48 @@ class Window(Tk):
             self.label_image = Label(self.image_window, image=self.image)
             self.label_image.pack()
             self.image_window.protocol("WM_DELETE_WINDOW", self.image_back)
+
+            self.image_menu = Menu(self.image_window)
+            # menu button to edit images
+            self.image_menu_edit = Menu(self.image_menu, tearoff=0)
+            # option to resize image
+            self.image_menu_edit.add_command(label="Resize", command=self.resize)
+            self.image_menu.add_cascade(label="Edit", menu=self.image_menu_edit)
+            self.image_window.config(menu=self.image_menu)
+
             self.image_window.mainloop()
+    
+    def resize(self):
+        self.edit_image_window_size = [100, 100]
+        self.edit_image_window = Toplevel(self.image_window, height=self.edit_image_window_size[0], width=self.edit_image_window_size[1])
+        self.edit_image_window.resizable(False, False)
+        self.image_size = Image.open(os.path.abspath(self.current_path)).size
+        
+        Label(self.edit_image_window, text="Height ").grid(row=0)
+        Label(self.edit_image_window, text="Width ").grid(row=1)
+        
+        self.image_size_entries = [
+            Entry(self.edit_image_window),
+            Entry(self.edit_image_window)
+        ]
 
+        self.image_size_entries[0].grid(row=0, column=1)
+        self.image_size_entries[1].grid(row=1, column=1)
 
+        self.input_image_size = [0, 0]
+
+        self.resize_button = Button(self.edit_image_window, text="Resize", command=self.change_size_values)
+        self.resize_button.grid(row=2, column=0)
+
+        self.edit_image_window.mainloop()
+
+    def change_size_values(self): 
+        self.input_image_size = (int(self.image_size_entries[0].get()), int(self.image_size_entries[1].get()))
+        print(self.input_image_size, Path(self.current_path).name)
+        Image.open(os.path.abspath(self.current_path)).resize(self.input_image_size).save(self.current_path)
+        self.edit_image_window.destroy()
+        self.image_window.destroy()
+        self.open()
 
     def back(self):
         """function to go back in hierarchy"""
