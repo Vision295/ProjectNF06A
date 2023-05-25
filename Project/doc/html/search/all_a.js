@@ -1,0 +1,20 @@
+var searchData=
+[
+  ['main_0',['main',['../namespacemain.html',1,'main'],['../main_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4',1,'main():&#160;main.c'],['../test_dox_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4',1,'main():&#160;testDox.c'],['../test_images_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4',1,'main():&#160;testImages.c'],['../namespacemain.html#a3140e9a5b6a71ffbf498198cfc471b88',1,'main.main()'],['../namespacetest.html#a5641f345f97c6666d56e6f6b507becb6',1,'test.main()']]],
+  ['main_2ec_1',['main.c',['../main_8c.html',1,'']]],
+  ['main_2epy_2',['main.py',['../main_8py.html',1,'']]],
+  ['mainscreen_3',['mainScreen',['../namespacemain.html#a0a48b3ca8562d4d3686fd8be8eeab75f',1,'main']]],
+  ['map_5frange_4',['map_range',['../namespacemain.html#a0af4f2bfc5dda5eb0e40607e999427e8',1,'main']]],
+  ['max_5fbase_5',['MAX_BASE',['../namespacemain.html#af53157f99f7a41c991fd888b82ffcf80',1,'main']]],
+  ['max_5fmapped_6',['MAX_MAPPED',['../namespacemain.html#adf8e78c4c9ea5979c42dbffea5e8a3a3',1,'main']]],
+  ['menu_7',['menu',['../classexplorer_1_1_explorer.html#a24bc605eb6332aad009941705612a1a0',1,'explorer::Explorer']]],
+  ['menu_5ffile_8',['menu_file',['../classexplorer_1_1_explorer.html#a4dbd918f5df0e0ba2fe148c69a1d6cdb',1,'explorer::Explorer']]],
+  ['metadata_9',['metadata',['../classimage__manager_1_1_image__manager.html#a413441a2fff15777f44b7a6aba62fd4f',1,'image_manager::Image_manager']]],
+  ['metadata_5fimage_5fwindow_10',['metadata_image_window',['../classimage__manager_1_1_image__manager.html#a2bf1fb205e265c99578bc5d6a2215a94',1,'image_manager::Image_manager']]],
+  ['metadata_5ftext_11',['metadata_text',['../classimage__manager_1_1_image__manager.html#a4b8008a0f5235e0e2cdefbe541a8ddbc',1,'image_manager::Image_manager']]],
+  ['metadata_5ftext_5fzone_12',['metadata_text_zone',['../classimage__manager_1_1_image__manager.html#a0d010ccedd39a19b0b5fa65018f3d084',1,'image_manager::Image_manager']]],
+  ['min_5fbase_13',['MIN_BASE',['../namespacemain.html#a0662741859d22afaf46951333f692982',1,'main']]],
+  ['min_5fmapped_14',['MIN_MAPPED',['../namespacemain.html#aeff61c3f5d3ad1a8da9843375fdfffdf',1,'main']]],
+  ['modified_5fimage_5fsize_15',['modified_image_size',['../classimage__manager_1_1_image__manager.html#a11eb7d0e7d2aa0681ca26328fd8510c7',1,'image_manager::Image_manager']]],
+  ['modified_5fimage_5fto_5ffit_16',['modified_image_to_fit',['../classimage__manager_1_1_image__manager.html#ad588f4c8656a99e4edc7e75c3d3448aa',1,'image_manager::Image_manager']]]
+];

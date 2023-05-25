@@ -1,0 +1,87 @@
+\doxysection{test.\+py}
+\hypertarget{test_8py_source}{}\label{test_8py_source}\index{C:/Users/theop/Documents/\_Perso/\_UTT/NF06A/ProjectNF06A/Project/Tkinter/test.py@{C:/Users/theop/Documents/\_Perso/\_UTT/NF06A/ProjectNF06A/Project/Tkinter/test.py}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{test_8py_source_l00001}00001\ \textcolor{keyword}{from}\ PIL\ \textcolor{keyword}{import}\ Image}
+\DoxyCodeLine{\Hypertarget{test_8py_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{test_8py_source_l00003}00003\ \textcolor{keyword}{def\ }apply\_filter(image\_path,\ filter\_name):}
+\DoxyCodeLine{\Hypertarget{test_8py_source_l00004}00004\ \ \ \ \ \textcolor{comment}{\#\ Open\ the\ image}}
+\DoxyCodeLine{\Hypertarget{test_8py_source_l00005}00005\ \ \ \ \ image\ =\ Image.open(image\_path)}
+\DoxyCodeLine{\Hypertarget{test_8py_source_l00006}00006\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{test_8py_source_l00007}00007\ \ \ \ \ \textcolor{comment}{\#\ Convert\ the\ image\ to\ RGB\ mode}}
+\DoxyCodeLine{\Hypertarget{test_8py_source_l00008}00008\ \ \ \ \ image\ =\ image.convert(\textcolor{stringliteral}{"{}RGB"{}})}
+\DoxyCodeLine{\Hypertarget{test_8py_source_l00009}00009\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{test_8py_source_l00010}00010\ \ \ \ \ \textcolor{comment}{\#\ Get\ the\ dimensions\ of\ the\ image}}
+\DoxyCodeLine{\Hypertarget{test_8py_source_l00011}00011\ \ \ \ \ width,\ height\ =\ image.size}
+\DoxyCodeLine{\Hypertarget{test_8py_source_l00012}00012\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{test_8py_source_l00013}00013\ \ \ \ \ \textcolor{comment}{\#\ Create\ a\ new\ image\ for\ the\ filtered\ result}}
+\DoxyCodeLine{\Hypertarget{test_8py_source_l00014}00014\ \ \ \ \ filtered\_image\ =\ Image.new(\textcolor{stringliteral}{"{}RGB"{}},\ (width,\ height))}
+\DoxyCodeLine{\Hypertarget{test_8py_source_l00015}00015\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{test_8py_source_l00016}00016\ \ \ \ \ \textcolor{comment}{\#\ Define\ the\ filter\ weights\ for\ different\ filters}}
+\DoxyCodeLine{\Hypertarget{test_8py_source_l00017}00017\ \ \ \ \ filter\_weights\ =\ \{}
+\DoxyCodeLine{\Hypertarget{test_8py_source_l00018}00018\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}sepia"{}}:\ ((0.393,\ 0.769,\ 0.189),\ (0.349,\ 0.686,\ 0.168),\ (0.272,\ 0.534,\ 0.131)),}
+\DoxyCodeLine{\Hypertarget{test_8py_source_l00019}00019\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}black\_and\_white"{}}:\ ((0.2989,\ 0.5870,\ 0.1140),),}
+\DoxyCodeLine{\Hypertarget{test_8py_source_l00020}00020\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}brightness"{}}:\ ((1.2,\ 1.2,\ 1.2),),}
+\DoxyCodeLine{\Hypertarget{test_8py_source_l00021}00021\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}darkness"{}}:\ ((0.8,\ 0.8,\ 0.8),),}
+\DoxyCodeLine{\Hypertarget{test_8py_source_l00022}00022\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}red\_filter"{}}:\ ((1.0,\ 0.0,\ 0.0),)}
+\DoxyCodeLine{\Hypertarget{test_8py_source_l00023}00023\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Add\ more\ filters\ here\ if\ needed}}
+\DoxyCodeLine{\Hypertarget{test_8py_source_l00024}00024\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{test_8py_source_l00025}00025\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{test_8py_source_l00026}00026\ \ \ \ \ \textcolor{comment}{\#\ Apply\ the\ selected\ filter}}
+\DoxyCodeLine{\Hypertarget{test_8py_source_l00027}00027\ \ \ \ \ \textcolor{keywordflow}{if}\ filter\_name\ \textcolor{keywordflow}{in}\ filter\_weights:}
+\DoxyCodeLine{\Hypertarget{test_8py_source_l00028}00028\ \ \ \ \ \ \ \ \ weights\ =\ filter\_weights[filter\_name]}
+\DoxyCodeLine{\Hypertarget{test_8py_source_l00029}00029\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{test_8py_source_l00030}00030\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ y\ \textcolor{keywordflow}{in}\ range(height):}
+\DoxyCodeLine{\Hypertarget{test_8py_source_l00031}00031\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ x\ \textcolor{keywordflow}{in}\ range(width):}
+\DoxyCodeLine{\Hypertarget{test_8py_source_l00032}00032\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Get\ the\ RGB\ values\ of\ the\ pixel}}
+\DoxyCodeLine{\Hypertarget{test_8py_source_l00033}00033\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ old\_r,\ old\_g,\ old\_b\ =\ image.getpixel((x,\ y))}
+\DoxyCodeLine{\Hypertarget{test_8py_source_l00034}00034\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{test_8py_source_l00035}00035\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Apply\ the\ filter\ weights\ to\ calculate\ the\ new\ RGB\ values}}
+\DoxyCodeLine{\Hypertarget{test_8py_source_l00036}00036\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ new\_r\ =\ sum(w[0]\ *\ old\_r\ +\ w[1]\ *\ old\_g\ +\ w[2]\ *\ old\_b\ \textcolor{keywordflow}{for}\ w\ \textcolor{keywordflow}{in}\ weights)}
+\DoxyCodeLine{\Hypertarget{test_8py_source_l00037}00037\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ new\_g\ =\ sum(w[0]\ *\ old\_r\ +\ w[1]\ *\ old\_g\ +\ w[2]\ *\ old\_b\ \textcolor{keywordflow}{for}\ w\ \textcolor{keywordflow}{in}\ weights)}
+\DoxyCodeLine{\Hypertarget{test_8py_source_l00038}00038\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ new\_b\ =\ sum(w[0]\ *\ old\_r\ +\ w[1]\ *\ old\_g\ +\ w[2]\ *\ old\_b\ \textcolor{keywordflow}{for}\ w\ \textcolor{keywordflow}{in}\ weights)}
+\DoxyCodeLine{\Hypertarget{test_8py_source_l00039}00039\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{test_8py_source_l00040}00040\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Clamp\ the\ RGB\ values\ to\ the\ range\ [0,\ 255]}}
+\DoxyCodeLine{\Hypertarget{test_8py_source_l00041}00041\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ new\_r\ =\ int(max(0,\ min(255,\ new\_r)))}
+\DoxyCodeLine{\Hypertarget{test_8py_source_l00042}00042\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ new\_g\ =\ int(max(0,\ min(255,\ new\_g)))}
+\DoxyCodeLine{\Hypertarget{test_8py_source_l00043}00043\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ new\_b\ =\ int(max(0,\ min(255,\ new\_b)))}
+\DoxyCodeLine{\Hypertarget{test_8py_source_l00044}00044\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{test_8py_source_l00045}00045\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Set\ the\ new\ RGB\ values\ for\ the\ pixel\ in\ the\ filtered\ image}}
+\DoxyCodeLine{\Hypertarget{test_8py_source_l00046}00046\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ filtered\_image.putpixel((x,\ y),\ (new\_r,\ new\_g,\ new\_b))}
+\DoxyCodeLine{\Hypertarget{test_8py_source_l00047}00047\ \ \ \ \ \textcolor{keywordflow}{else}:}
+\DoxyCodeLine{\Hypertarget{test_8py_source_l00048}00048\ \ \ \ \ \ \ \ \ print(\textcolor{stringliteral}{"{}Filter\ not\ found."{}})}
+\DoxyCodeLine{\Hypertarget{test_8py_source_l00049}00049\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keywordtype}{None}}
+\DoxyCodeLine{\Hypertarget{test_8py_source_l00050}00050\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{test_8py_source_l00051}00051\ \ \ \ \ \textcolor{comment}{\#\ Export\ the\ filtered\ image}}
+\DoxyCodeLine{\Hypertarget{test_8py_source_l00052}00052\ \ \ \ \ filtered\_image.save(f\textcolor{stringliteral}{"{}filtered\_\{filter\_name\}\_\{image\_path\}"{}})}
+\DoxyCodeLine{\Hypertarget{test_8py_source_l00053}00053\ \ \ \ \ print(\textcolor{stringliteral}{"{}Filtered\ image\ exported\ successfully."{}})}
+\DoxyCodeLine{\Hypertarget{test_8py_source_l00054}00054\ }
+\DoxyCodeLine{\Hypertarget{test_8py_source_l00055}00055\ }
+\DoxyCodeLine{\Hypertarget{test_8py_source_l00056}00056\ \textcolor{comment}{\#-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{test_8py_source_l00057}00057\ \textcolor{keyword}{from}\ PIL\ \textcolor{keyword}{import}\ Image}
+\DoxyCodeLine{\Hypertarget{test_8py_source_l00058}00058\ }
+\DoxyCodeLine{\Hypertarget{test_8py_source_l00059}00059\ }
+\DoxyCodeLine{\Hypertarget{test_8py_source_l00060}00060\ \textcolor{keyword}{def\ }\mbox{\hyperlink{namespacemain}{main}}():}
+\DoxyCodeLine{\Hypertarget{test_8py_source_l00061}00061\ \ \ \ \ image\ =\ Image.open(\textcolor{stringliteral}{"{}image.jpg"{}})}
+\DoxyCodeLine{\Hypertarget{test_8py_source_l00062}00062\ \ \ \ \ sepia\_filter\ =\ ((0.393,\ 0.769,\ 0.189),\ (0.349,\ 0.686,\ 0.168),\ (0.272,\ 0.534,\ 0.131))}
+\DoxyCodeLine{\Hypertarget{test_8py_source_l00063}00063\ \ \ \ \ apply\_filter(image,\ sepia\_filter)}
+\DoxyCodeLine{\Hypertarget{test_8py_source_l00064}00064\ \ \ \ \ image.save(\textcolor{stringliteral}{"{}image\_sepia.jpg"{}})}
+\DoxyCodeLine{\Hypertarget{test_8py_source_l00065}00065\ }
+\DoxyCodeLine{\Hypertarget{test_8py_source_l00066}00066\ }
+\DoxyCodeLine{\Hypertarget{test_8py_source_l00067}00067\ \textcolor{keyword}{def\ }apply\_filter(image,\ mask):}
+\DoxyCodeLine{\Hypertarget{test_8py_source_l00068}00068\ \ \ \ \ (width,\ height)\ =\ image.size}
+\DoxyCodeLine{\Hypertarget{test_8py_source_l00069}00069\ \ \ \ \ \textcolor{keywordflow}{for}\ y\ \textcolor{keywordflow}{in}\ range(0,\ height\ -\/\ 1):}
+\DoxyCodeLine{\Hypertarget{test_8py_source_l00070}00070\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ x\ \textcolor{keywordflow}{in}\ range(0,\ width\ -\/\ 1):}
+\DoxyCodeLine{\Hypertarget{test_8py_source_l00071}00071\ \ \ \ \ \ \ \ \ \ \ \ \ px\ =\ image.getpixel((x,\ y))}
+\DoxyCodeLine{\Hypertarget{test_8py_source_l00072}00072\ \ \ \ \ \ \ \ \ \ \ \ \ new\_px\ =\ get\_new\_pixel(px,\ mask)}
+\DoxyCodeLine{\Hypertarget{test_8py_source_l00073}00073\ \ \ \ \ \ \ \ \ \ \ \ \ image.putpixel((x,\ y),\ new\_px)}
+\DoxyCodeLine{\Hypertarget{test_8py_source_l00074}00074\ }
+\DoxyCodeLine{\Hypertarget{test_8py_source_l00075}00075\ }
+\DoxyCodeLine{\Hypertarget{test_8py_source_l00076}00076\ \textcolor{keyword}{def\ }get\_new\_pixel(old\_px,\ mask):}
+\DoxyCodeLine{\Hypertarget{test_8py_source_l00077}00077\ \ \ \ \ (r,\ g,\ b)\ =\ old\_px}
+\DoxyCodeLine{\Hypertarget{test_8py_source_l00078}00078\ \ \ \ \ new\_r\ =\ int(r\ *\ mask[0][0]\ +\ g\ *\ mask[0][1]\ +\ b\ *\ mask[0][2])}
+\DoxyCodeLine{\Hypertarget{test_8py_source_l00079}00079\ \ \ \ \ new\_g\ =\ int(r\ *\ mask[1][0]\ +\ g\ *\ mask[1][1]\ +\ b\ *\ mask[1][2])}
+\DoxyCodeLine{\Hypertarget{test_8py_source_l00080}00080\ \ \ \ \ new\_b\ =\ int(r\ *\ mask[2][0]\ +\ g\ *\ mask[2][1]\ +\ b\ *\ mask[2][2])}
+\DoxyCodeLine{\Hypertarget{test_8py_source_l00081}00081\ \ \ \ \ \textcolor{keywordflow}{return}\ new\_r,\ new\_g,\ new\_b}
+
+\end{DoxyCode}

@@ -1,0 +1,48 @@
+\doxysection{C\+:/\+Users/theop/\+Documents/\+\_\+\+Perso/\+\_\+\+UTT/\+NF06\+A/\+Project\+NF06\+A/\+Project/main.c File Reference}
+\hypertarget{main_8c}{}\label{main_8c}\index{C:/Users/theop/Documents/\_Perso/\_UTT/NF06A/ProjectNF06A/Project/main.c@{C:/Users/theop/Documents/\_Perso/\_UTT/NF06A/ProjectNF06A/Project/main.c}}
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$math.\+h$>$}\newline
+\doxysubsubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_node}{Node}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_node}{Node}} \mbox{\hyperlink{main_8c_a6827dd16daa3ce1334caa30e60a2e554}{Create\+\_\+\+Node}} (unsigned char byte, int weight, struct \mbox{\hyperlink{struct_node}{Node}} \texorpdfstring{$\ast$}{*}left, struct \mbox{\hyperlink{struct_node}{Node}} \texorpdfstring{$\ast$}{*}right)
+\item 
+void \mbox{\hyperlink{main_8c_ac4752224592b7638524e36424c021a27}{Insertion\+\_\+\+Sort}} (struct \mbox{\hyperlink{struct_node}{Node}} \texorpdfstring{$\ast$}{*}Node\+\_\+\+List, int n)
+\item 
+void \mbox{\hyperlink{main_8c_ab5c55b97855655830b1b61dda60334c0}{Visit\+\_\+\+Tree\+\_\+\+To\+\_\+\+Get\+\_\+\+Encoding}} (struct \mbox{\hyperlink{struct_node}{Node}} Node\+\_\+to\+\_\+visit, int conversion\+\_\+array\mbox{[}256\mbox{]}\mbox{[}9\mbox{]}, int \texorpdfstring{$\ast$}{*}current\+\_\+bin\+\_\+code, int n\+\_\+curr\+\_\+bit\+\_\+code, int bit\+\_\+to\+\_\+add)
+\item 
+int \mbox{\hyperlink{main_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{main_8c_a6827dd16daa3ce1334caa30e60a2e554}\label{main_8c_a6827dd16daa3ce1334caa30e60a2e554} 
+\index{main.c@{main.c}!Create\_Node@{Create\_Node}}
+\index{Create\_Node@{Create\_Node}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{Create\_Node()}{Create\_Node()}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{struct_node}{Node}} Create\+\_\+\+Node (\begin{DoxyParamCaption}\item[{unsigned char}]{byte,  }\item[{int}]{weight,  }\item[{struct \mbox{\hyperlink{struct_node}{Node}} \texorpdfstring{$\ast$}{*}}]{left,  }\item[{struct \mbox{\hyperlink{struct_node}{Node}} \texorpdfstring{$\ast$}{*}}]{right }\end{DoxyParamCaption})}
+
+\Hypertarget{main_8c_ac4752224592b7638524e36424c021a27}\label{main_8c_ac4752224592b7638524e36424c021a27} 
+\index{main.c@{main.c}!Insertion\_Sort@{Insertion\_Sort}}
+\index{Insertion\_Sort@{Insertion\_Sort}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{Insertion\_Sort()}{Insertion\_Sort()}}
+{\footnotesize\ttfamily void Insertion\+\_\+\+Sort (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{struct_node}{Node}} \texorpdfstring{$\ast$}{*}}]{Node\+\_\+\+List,  }\item[{int}]{n }\end{DoxyParamCaption})}
+
+\Hypertarget{main_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}\label{main_8c_ae66f6b31b5ad750f1fe042a706a4e3d4} 
+\index{main.c@{main.c}!main@{main}}
+\index{main@{main}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\Hypertarget{main_8c_ab5c55b97855655830b1b61dda60334c0}\label{main_8c_ab5c55b97855655830b1b61dda60334c0} 
+\index{main.c@{main.c}!Visit\_Tree\_To\_Get\_Encoding@{Visit\_Tree\_To\_Get\_Encoding}}
+\index{Visit\_Tree\_To\_Get\_Encoding@{Visit\_Tree\_To\_Get\_Encoding}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{Visit\_Tree\_To\_Get\_Encoding()}{Visit\_Tree\_To\_Get\_Encoding()}}
+{\footnotesize\ttfamily void Visit\+\_\+\+Tree\+\_\+\+To\+\_\+\+Get\+\_\+\+Encoding (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{struct_node}{Node}}}]{Node\+\_\+to\+\_\+visit,  }\item[{int}]{conversion\+\_\+array\mbox{[}256\mbox{]}\mbox{[}9\mbox{]},  }\item[{int \texorpdfstring{$\ast$}{*}}]{current\+\_\+bin\+\_\+code,  }\item[{int}]{n\+\_\+curr\+\_\+bit\+\_\+code,  }\item[{int}]{bit\+\_\+to\+\_\+add }\end{DoxyParamCaption})}
+
