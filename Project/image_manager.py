@@ -157,8 +157,10 @@ class Image_manager(Toplevel):
             "blue_filter": ((1.0, 0.0, self.intensity), (0.0, 1.0, self.intensity), (0.0, 0.0, 1.0))
             # Add more filters here if needed
         }
-        
-        self.apply_custom_filter(_mask=self.predefined_filters_choice[self.selected_filter])
+        if self.predefined_filters_choice != "black_and_white":
+            self.apply_custom_filter(_mask=self.predefined_filters_choice[self.selected_filter])
+        else:
+            return 0
  
     def apply_custom_filter(self, _mask=None):
         self.filtered_image = self.image.copy()
@@ -214,7 +216,7 @@ class Image_manager(Toplevel):
         Label(self.edit_image_window, text="Select a filter of your choice between the following : ").grid(row=0, column=0)
         self.options = [
             "sepia",
-            "black_and_white,"
+            "black_and_white",
             "brightness",
             "darkness",
             "red_filter",
