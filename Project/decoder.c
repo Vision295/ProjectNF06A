@@ -1,3 +1,14 @@
+/**
+ * @file decoder.c
+ * @author Lucas SCHUMMER
+ * @brief The file decoder that uses the Huffman Coding Algorithm
+ * @version 1.0
+ * @date 28/05/2023
+ * 
+ * @copyright Copyright (c) 2023
+ * 
+ */
+
 #include <stdio.h>
 #include <stdlib.h>
 
