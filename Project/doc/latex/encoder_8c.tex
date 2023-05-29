@@ -1,27 +1,104 @@
 \doxysection{C\+:/\+Users/theop/\+Documents/\+\_\+\+Perso/\+\_\+\+UTT/\+NF06\+A/\+Project\+NF06\+A/\+Project/encoder.c File Reference}
 \hypertarget{encoder_8c}{}\label{encoder_8c}\index{C:/Users/theop/Documents/\_Perso/\_UTT/NF06A/ProjectNF06A/Project/encoder.c@{C:/Users/theop/Documents/\_Perso/\_UTT/NF06A/ProjectNF06A/Project/encoder.c}}
+
+
+The file encoder that uses the Huffman Coding Algorithm.  
+
+
 {\ttfamily \#include $<$stdio.\+h$>$}\newline
 {\ttfamily \#include $<$stdlib.\+h$>$}\newline
 {\ttfamily \#include $<$math.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
 \doxysubsubsection*{Data Structures}
 \begin{DoxyCompactItemize}
 \item 
 struct \mbox{\hyperlink{struct_node}{Node}}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em An element of the Huffman Tree weight is the number of occurencies in the file of the byte represented by the \doxylink{struct_node}{Node} byte is the byte stored by the \doxylink{struct_node}{Node} (in case the \doxylink{struct_node}{Node} is a \"{}leaf\"{} of the tree) left and right point to other Nodes, the one under it in the tree (only if \doxylink{struct_node}{Node} is not a \"{}leaf\"{}) \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
 struct \mbox{\hyperlink{struct_node}{Node}} \mbox{\hyperlink{encoder_8c_a6827dd16daa3ce1334caa30e60a2e554}{Create\+\_\+\+Node}} (unsigned char byte, int weight, struct \mbox{\hyperlink{struct_node}{Node}} \texorpdfstring{$\ast$}{*}left, struct \mbox{\hyperlink{struct_node}{Node}} \texorpdfstring{$\ast$}{*}right)
-\item 
+\begin{DoxyCompactList}\small\item\em Creates a struct \doxylink{struct_node}{Node} from all its parameters. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{encoder_8c_a9e7e8985eb44f3a3f73b19e57169f54a}{Read\+\_\+\+Bytes}} (int size\+\_\+of\+\_\+file, unsigned char \texorpdfstring{$\ast$}{*}bytes, FILE \texorpdfstring{$\ast$}{*}fp)
+\begin{DoxyCompactList}\small\item\em Read the file to encode and store its bytes into an array. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{encoder_8c_add31ecc004cda4a6f1d38b95cb10e0e6}{Get\+\_\+\+Diff\+\_\+\+Bytes}} (int size\+\_\+of\+\_\+file, unsigned char \texorpdfstring{$\ast$}{*}bytes, unsigned char \texorpdfstring{$\ast$}{*}diff\+\_\+bytes)
+\begin{DoxyCompactList}\small\item\em From the read bytes of the file to compress, extract all the different bytes present and get the amount of different bytes. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{encoder_8c_aa8cb21192fb2c276cf26fcdddedbdffc}{Get\+\_\+\+Bytes\+\_\+\+Frequencies}} (int size\+\_\+of\+\_\+file, int n\+\_\+diff\+\_\+bytes, unsigned char \texorpdfstring{$\ast$}{*}bytes, unsigned char \texorpdfstring{$\ast$}{*}diff\+\_\+bytes, int \texorpdfstring{$\ast$}{*}frequencies)
+\begin{DoxyCompactList}\small\item\em From the bytes of the file and the list of different bytes, count the number of occurencies of each byte in the whole file. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{encoder_8c_a3277b192731bc36f49e3eaadfcc90dc8}{Bubble\+\_\+\+Sort}} (int n\+\_\+diff\+\_\+bytes, unsigned char \texorpdfstring{$\ast$}{*}diff\+\_\+bytes, int \texorpdfstring{$\ast$}{*}frequencies)
+\begin{DoxyCompactList}\small\item\em A kind of \"{}double\"{} bubble sort \+: we sort diff\+\_\+bytes and frequencies by frequencies(ascending order). The arrays stay \"{}symetrical\"{} frequencies\mbox{[}i\mbox{]} still corresponds to the occurencies of the byte diff\+\_\+bytes\mbox{[}i\mbox{]} in the file ~\newline
+ \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{encoder_8c_af09f65e41ee524e7bf79f574aa61619d}{Write\+\_\+\+Compression\+\_\+\+File}} (int n\+\_\+diff\+\_\+bytes, char file\+\_\+type, unsigned char \texorpdfstring{$\ast$}{*}diff\+\_\+bytes, int \texorpdfstring{$\ast$}{*}frequencies)
+\begin{DoxyCompactList}\small\item\em Write the file to transfer to the decoder (in addition to the compressed file) This file contains the information necessary for the decoder to rebuild the tree. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{encoder_8c_ac4752224592b7638524e36424c021a27}{Insertion\+\_\+\+Sort}} (struct \mbox{\hyperlink{struct_node}{Node}} \texorpdfstring{$\ast$}{*}Node\+\_\+\+List, int n)
-\item 
+\begin{DoxyCompactList}\small\item\em Sorts the Node\+\_\+\+List by ascending order of frequencies, knowing that the list is already sorted, except for the last element. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{encoder_8c_ac02ae24203f5de237aaa7b1661129cb5}{Create\+\_\+\+Huffman\+\_\+\+Tree}} (int n\+\_\+diff\+\_\+bytes, struct \mbox{\hyperlink{struct_node}{Node}} \texorpdfstring{$\ast$}{*}Node\+\_\+list, struct \mbox{\hyperlink{struct_node}{Node}} \texorpdfstring{$\ast$}{*}memory\+\_\+nodes)
+\begin{DoxyCompactList}\small\item\em From the sorted list of Nodes, create the Huffman Tree, according to the Huffman Coding Algorithm. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{encoder_8c_a9604ea70e4a68d1b83a9b470a5fe855c}{Visit\+\_\+\+Tree\+\_\+\+To\+\_\+\+Get\+\_\+\+Encoding}} (struct \mbox{\hyperlink{struct_node}{Node}} Node\+\_\+to\+\_\+visit, unsigned short conversion\+\_\+array\mbox{[}256\mbox{]}\mbox{[}2\mbox{]}, unsigned short current\+\_\+bin\+\_\+code, unsigned char n\+\_\+bits\+\_\+curr\+\_\+bit\+\_\+code, int bit\+\_\+to\+\_\+add)
-\item 
+\begin{DoxyCompactList}\small\item\em A recursive fonction used to visit the entire Huffman Tree once it\textquotesingle{}s been constructed, so that we can get the encoding of each different byte (the encoding of a byte corresponds to the path from the \"{}head\"{} of the tree to the struct \doxylink{struct_node}{Node} (a leaf of the tree) containing the byte) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{encoder_8c_a2091161629435080805826b4ae434daf}{Write\+\_\+\+Encoded\+\_\+\+To\+\_\+\+File}} (int size\+\_\+of\+\_\+file, unsigned char \texorpdfstring{$\ast$}{*}bytes, unsigned short conversion\+\_\+array\mbox{[}256\mbox{]}\mbox{[}2\mbox{]})
+\begin{DoxyCompactList}\small\item\em Convert each byte of the file into its compressed form and write the whole into the compressed file. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{encoder_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}} ()
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Read from file\+\_\+to\+\_\+compress.\+txt the name of the file to compress, open this file and read its bytes. Create the Huffman Tree according to the Huffman Coding Algorithm. Go through the tree to get the bit sequence corresponding to the each byte. Write the compressed version of each byte into compressed.\+bin, as well as the information necessary for the decoder to rebuild the tree in conversion.\+bin. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The file encoder that uses the Huffman Coding Algorithm. 
+
+\begin{DoxyAuthor}{Author}
+Lucas SCHUMMER 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+28/05/2023
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2023 
+\end{DoxyCopyright}
 
 
 \doxysubsection{Function Documentation}
+\Hypertarget{encoder_8c_a3277b192731bc36f49e3eaadfcc90dc8}\label{encoder_8c_a3277b192731bc36f49e3eaadfcc90dc8} 
+\index{encoder.c@{encoder.c}!Bubble\_Sort@{Bubble\_Sort}}
+\index{Bubble\_Sort@{Bubble\_Sort}!encoder.c@{encoder.c}}
+\doxysubsubsection{\texorpdfstring{Bubble\_Sort()}{Bubble\_Sort()}}
+{\footnotesize\ttfamily void Bubble\+\_\+\+Sort (\begin{DoxyParamCaption}\item[{int}]{n\+\_\+diff\+\_\+bytes,  }\item[{unsigned char \texorpdfstring{$\ast$}{*}}]{diff\+\_\+bytes,  }\item[{int \texorpdfstring{$\ast$}{*}}]{frequencies }\end{DoxyParamCaption})}
+
+
+
+A kind of \"{}double\"{} bubble sort \+: we sort diff\+\_\+bytes and frequencies by frequencies(ascending order). The arrays stay \"{}symetrical\"{} frequencies\mbox{[}i\mbox{]} still corresponds to the occurencies of the byte diff\+\_\+bytes\mbox{[}i\mbox{]} in the file ~\newline
+ 
+
+
+\begin{DoxyParams}{Parameters}
+{\em n\+\_\+diff\+\_\+bytes} & The number of different bytes (the length of the diff\+\_\+bytes array) \\
+\hline
+{\em diff\+\_\+bytes} & All the different bytes present in the file \\
+\hline
+{\em frequencies} & The number of occurencies of each byte present in the file \\
+\hline
+\end{DoxyParams}
+\Hypertarget{encoder_8c_ac02ae24203f5de237aaa7b1661129cb5}\label{encoder_8c_ac02ae24203f5de237aaa7b1661129cb5} 
+\index{encoder.c@{encoder.c}!Create\_Huffman\_Tree@{Create\_Huffman\_Tree}}
+\index{Create\_Huffman\_Tree@{Create\_Huffman\_Tree}!encoder.c@{encoder.c}}
+\doxysubsubsection{\texorpdfstring{Create\_Huffman\_Tree()}{Create\_Huffman\_Tree()}}
+{\footnotesize\ttfamily void Create\+\_\+\+Huffman\+\_\+\+Tree (\begin{DoxyParamCaption}\item[{int}]{n\+\_\+diff\+\_\+bytes,  }\item[{struct \mbox{\hyperlink{struct_node}{Node}} \texorpdfstring{$\ast$}{*}}]{Node\+\_\+list,  }\item[{struct \mbox{\hyperlink{struct_node}{Node}} \texorpdfstring{$\ast$}{*}}]{memory\+\_\+nodes }\end{DoxyParamCaption})}
+
+
+
+From the sorted list of Nodes, create the Huffman Tree, according to the Huffman Coding Algorithm. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em n\+\_\+diff\+\_\+bytes} & The number of different bytes (the length of the diff\+\_\+bytes array) \\
+\hline
+{\em Node\+\_\+list} & The array of struct Nodes, sorted by frequencies \\
+\hline
+{\em memory\+\_\+nodes} & An array of struct Nodes, used to store the Nodes we remove from the Nodes\+\_\+\+List (according to the Huffman Coding Algorithm) \\
+\hline
+\end{DoxyParams}
 \Hypertarget{encoder_8c_a6827dd16daa3ce1334caa30e60a2e554}\label{encoder_8c_a6827dd16daa3ce1334caa30e60a2e554} 
 \index{encoder.c@{encoder.c}!Create\_Node@{Create\_Node}}
 \index{Create\_Node@{Create\_Node}!encoder.c@{encoder.c}}
@@ -30,8 +107,67 @@ int \mbox{\hyperlink{encoder_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}} ()
 
 
 
-Definition at line \mbox{\hyperlink{encoder_8c_source_l00012}{12}} of file \mbox{\hyperlink{encoder_8c_source}{encoder.\+c}}.
+Creates a struct \doxylink{struct_node}{Node} from all its parameters. 
 
+
+\begin{DoxyParams}{Parameters}
+{\em byte} & The byte represented by the \doxylink{struct_node}{Node} (only if it\textquotesingle{}s a \"{}leaf\"{} of the tree, otherwise 0 (we will never use it in this case anyway)) \\
+\hline
+{\em weight} & If the \doxylink{struct_node}{Node} is a leaf, the weight is the number of occurencies in the file of the byte represented by the byte. Otherwise, it is the sum of the weights of the Nodes under it. \\
+\hline
+{\em left} & Points to another \doxylink{struct_node}{Node}, which is lower in the tree. (NULL if the \doxylink{struct_node}{Node} is a \"{}leaf\"{}) \\
+\hline
+{\em right} & Points to another \doxylink{struct_node}{Node}, which is lower in the tree. (NULL if the \doxylink{struct_node}{Node} is a \"{}leaf\"{})\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The struct \doxylink{struct_node}{Node} created 
+\end{DoxyReturn}
+\Hypertarget{encoder_8c_aa8cb21192fb2c276cf26fcdddedbdffc}\label{encoder_8c_aa8cb21192fb2c276cf26fcdddedbdffc} 
+\index{encoder.c@{encoder.c}!Get\_Bytes\_Frequencies@{Get\_Bytes\_Frequencies}}
+\index{Get\_Bytes\_Frequencies@{Get\_Bytes\_Frequencies}!encoder.c@{encoder.c}}
+\doxysubsubsection{\texorpdfstring{Get\_Bytes\_Frequencies()}{Get\_Bytes\_Frequencies()}}
+{\footnotesize\ttfamily void Get\+\_\+\+Bytes\+\_\+\+Frequencies (\begin{DoxyParamCaption}\item[{int}]{size\+\_\+of\+\_\+file,  }\item[{int}]{n\+\_\+diff\+\_\+bytes,  }\item[{unsigned char \texorpdfstring{$\ast$}{*}}]{bytes,  }\item[{unsigned char \texorpdfstring{$\ast$}{*}}]{diff\+\_\+bytes,  }\item[{int \texorpdfstring{$\ast$}{*}}]{frequencies }\end{DoxyParamCaption})}
+
+
+
+From the bytes of the file and the list of different bytes, count the number of occurencies of each byte in the whole file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em size\+\_\+of\+\_\+file} & The size of the file (the length of the bytes array) \\
+\hline
+{\em n\+\_\+diff\+\_\+bytes} & The number of different bytes (the length of the diff\+\_\+bytes array) \\
+\hline
+{\em bytes} & All the bytes of the file to compress \\
+\hline
+{\em diff\+\_\+bytes} & All the different bytes present in the file \\
+\hline
+{\em frequencies} & Array of integers to store the number of occurencies of each byte. It is of length n\+\_\+diff\+\_\+bytes (max 256) The frequencies and diff\+\_\+bytes arrays are \"{}symetrical\"{} \+: For any index i between 0 and n\+\_\+diff\+\_\+bytes-\/1 diff\+\_\+bytes\mbox{[}i\mbox{]} is the value of the byte, and frequencies\mbox{[}i\mbox{]} how many times you find it in the file \\
+\hline
+\end{DoxyParams}
+\Hypertarget{encoder_8c_add31ecc004cda4a6f1d38b95cb10e0e6}\label{encoder_8c_add31ecc004cda4a6f1d38b95cb10e0e6} 
+\index{encoder.c@{encoder.c}!Get\_Diff\_Bytes@{Get\_Diff\_Bytes}}
+\index{Get\_Diff\_Bytes@{Get\_Diff\_Bytes}!encoder.c@{encoder.c}}
+\doxysubsubsection{\texorpdfstring{Get\_Diff\_Bytes()}{Get\_Diff\_Bytes()}}
+{\footnotesize\ttfamily int Get\+\_\+\+Diff\+\_\+\+Bytes (\begin{DoxyParamCaption}\item[{int}]{size\+\_\+of\+\_\+file,  }\item[{unsigned char \texorpdfstring{$\ast$}{*}}]{bytes,  }\item[{unsigned char \texorpdfstring{$\ast$}{*}}]{diff\+\_\+bytes }\end{DoxyParamCaption})}
+
+
+
+From the read bytes of the file to compress, extract all the different bytes present and get the amount of different bytes. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em size\+\_\+of\+\_\+file} & The size of the file (the length of the bytes array) \\
+\hline
+{\em bytes} & Array of bytes read from the file to compress \\
+\hline
+{\em diff\+\_\+bytes} & Array of bytes containing all the different bytes we\textquotesingle{}ve read from the file\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The amount (integer) of different bytes in the file (from 0 to 256) 
+\end{DoxyReturn}
 \Hypertarget{encoder_8c_ac4752224592b7638524e36424c021a27}\label{encoder_8c_ac4752224592b7638524e36424c021a27} 
 \index{encoder.c@{encoder.c}!Insertion\_Sort@{Insertion\_Sort}}
 \index{Insertion\_Sort@{Insertion\_Sort}!encoder.c@{encoder.c}}
@@ -40,8 +176,15 @@ Definition at line \mbox{\hyperlink{encoder_8c_source_l00012}{12}} of file \mbox
 
 
 
-Definition at line \mbox{\hyperlink{encoder_8c_source_l00021}{21}} of file \mbox{\hyperlink{encoder_8c_source}{encoder.\+c}}.
+Sorts the Node\+\_\+\+List by ascending order of frequencies, knowing that the list is already sorted, except for the last element. 
 
+
+\begin{DoxyParams}{Parameters}
+{\em Node\+\_\+\+List} & Array of struct Nodes, that we want to sort by frequencies \\
+\hline
+{\em n} & The length of the array Nodes\+\_\+\+List \\
+\hline
+\end{DoxyParams}
 \Hypertarget{encoder_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}\label{encoder_8c_ae66f6b31b5ad750f1fe042a706a4e3d4} 
 \index{encoder.c@{encoder.c}!main@{main}}
 \index{main@{main}!encoder.c@{encoder.c}}
@@ -50,8 +193,30 @@ Definition at line \mbox{\hyperlink{encoder_8c_source_l00021}{21}} of file \mbox
 
 
 
-Definition at line \mbox{\hyperlink{encoder_8c_source_l00067}{67}} of file \mbox{\hyperlink{encoder_8c_source}{encoder.\+c}}.
+Read from file\+\_\+to\+\_\+compress.\+txt the name of the file to compress, open this file and read its bytes. Create the Huffman Tree according to the Huffman Coding Algorithm. Go through the tree to get the bit sequence corresponding to the each byte. Write the compressed version of each byte into compressed.\+bin, as well as the information necessary for the decoder to rebuild the tree in conversion.\+bin. 
 
+\begin{DoxyReturn}{Returns}
+0 if there were no errors in the process 
+\end{DoxyReturn}
+\Hypertarget{encoder_8c_a9e7e8985eb44f3a3f73b19e57169f54a}\label{encoder_8c_a9e7e8985eb44f3a3f73b19e57169f54a} 
+\index{encoder.c@{encoder.c}!Read\_Bytes@{Read\_Bytes}}
+\index{Read\_Bytes@{Read\_Bytes}!encoder.c@{encoder.c}}
+\doxysubsubsection{\texorpdfstring{Read\_Bytes()}{Read\_Bytes()}}
+{\footnotesize\ttfamily void Read\+\_\+\+Bytes (\begin{DoxyParamCaption}\item[{int}]{size\+\_\+of\+\_\+file,  }\item[{unsigned char \texorpdfstring{$\ast$}{*}}]{bytes,  }\item[{FILE \texorpdfstring{$\ast$}{*}}]{fp }\end{DoxyParamCaption})}
+
+
+
+Read the file to encode and store its bytes into an array. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em size\+\_\+of\+\_\+file} & The number of bytes of the file (which is also the length of the array of bytes) \\
+\hline
+{\em bytes} & The dynamically allocated bytes array, where we store the data from the file to compress \\
+\hline
+{\em fp} & The file to compress, already open in read(binary) mode \\
+\hline
+\end{DoxyParams}
 \Hypertarget{encoder_8c_a9604ea70e4a68d1b83a9b470a5fe855c}\label{encoder_8c_a9604ea70e4a68d1b83a9b470a5fe855c} 
 \index{encoder.c@{encoder.c}!Visit\_Tree\_To\_Get\_Encoding@{Visit\_Tree\_To\_Get\_Encoding}}
 \index{Visit\_Tree\_To\_Get\_Encoding@{Visit\_Tree\_To\_Get\_Encoding}!encoder.c@{encoder.c}}
@@ -60,5 +225,58 @@ Definition at line \mbox{\hyperlink{encoder_8c_source_l00067}{67}} of file \mbox
 
 
 
-Definition at line \mbox{\hyperlink{encoder_8c_source_l00037}{37}} of file \mbox{\hyperlink{encoder_8c_source}{encoder.\+c}}.
+A recursive fonction used to visit the entire Huffman Tree once it\textquotesingle{}s been constructed, so that we can get the encoding of each different byte (the encoding of a byte corresponds to the path from the \"{}head\"{} of the tree to the struct \doxylink{struct_node}{Node} (a leaf of the tree) containing the byte) 
 
+
+\begin{DoxyParams}{Parameters}
+{\em Node\+\_\+to\+\_\+visit} & The struct \doxylink{struct_node}{Node} we are currently visiting. Initially, it is the \"{}head\"{} of the tree (i.\+e the last element in the Nodes\+\_\+\+List while building the tree) \\
+\hline
+{\em conversion\+\_\+array} & A 2D array where we store the encoding of each byte. We store first the bit size of the encoding (i.\+e the number of Nodes we\textquotesingle{}ve went through before reaching the corresponding \doxylink{struct_node}{Node}), and then the encoding in itself (over 2 bytes) Example \+: At conversion\+\_\+array\mbox{[}10\mbox{]}\mbox{[}1\mbox{]} you will find the encoding for the byte 00001010 (10 in binary) which can be\+: 00000000 00101110 . And at conversion\+\_\+array\mbox{[}0\mbox{]} for example 7 (we only have to take into account the last 7 bits)\\
+\hline
+{\em current\+\_\+bin\+\_\+code} & Going from the head of the tree, we add a 0 each time we go left down the tree, and a one if we go right current\+\_\+bin\+\_\+code contains the history of the way we\textquotesingle{}ve been through up until now When eventually we will reach a leaf, the current\+\_\+bin\+\_\+code will become the encodind of the corresponding byte (the byte stored by the \doxylink{struct_node}{Node} at Node.\+byte) \\
+\hline
+{\em n\+\_\+bits\+\_\+curr\+\_\+bit\+\_\+code} & The length of the current binary code (i.\+e the number of time we\textquotesingle{}ve went left or right up until now) \\
+\hline
+{\em bit\+\_\+to\+\_\+add} & The bit to add to the current binary code (i.\+e 0 if we\textquotesingle{}ve just went left, 1 if it was right) \\
+\hline
+\end{DoxyParams}
+\Hypertarget{encoder_8c_af09f65e41ee524e7bf79f574aa61619d}\label{encoder_8c_af09f65e41ee524e7bf79f574aa61619d} 
+\index{encoder.c@{encoder.c}!Write\_Compression\_File@{Write\_Compression\_File}}
+\index{Write\_Compression\_File@{Write\_Compression\_File}!encoder.c@{encoder.c}}
+\doxysubsubsection{\texorpdfstring{Write\_Compression\_File()}{Write\_Compression\_File()}}
+{\footnotesize\ttfamily void Write\+\_\+\+Compression\+\_\+\+File (\begin{DoxyParamCaption}\item[{int}]{n\+\_\+diff\+\_\+bytes,  }\item[{char}]{file\+\_\+type,  }\item[{unsigned char \texorpdfstring{$\ast$}{*}}]{diff\+\_\+bytes,  }\item[{int \texorpdfstring{$\ast$}{*}}]{frequencies }\end{DoxyParamCaption})}
+
+
+
+Write the file to transfer to the decoder (in addition to the compressed file) This file contains the information necessary for the decoder to rebuild the tree. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em n\+\_\+diff\+\_\+bytes} & The number of different bytes (the length of the diff\+\_\+bytes array) \\
+\hline
+{\em file\+\_\+type} & An char giving the decoder the format of the encoded\+\_\+file (49 for png, 50 for jpg...) (More details in the main function) \\
+\hline
+{\em diff\+\_\+bytes} & All the different bytes present in the file \\
+\hline
+{\em frequencies} & The number of occurencies of each byte present in the file \\
+\hline
+\end{DoxyParams}
+\Hypertarget{encoder_8c_a2091161629435080805826b4ae434daf}\label{encoder_8c_a2091161629435080805826b4ae434daf} 
+\index{encoder.c@{encoder.c}!Write\_Encoded\_To\_File@{Write\_Encoded\_To\_File}}
+\index{Write\_Encoded\_To\_File@{Write\_Encoded\_To\_File}!encoder.c@{encoder.c}}
+\doxysubsubsection{\texorpdfstring{Write\_Encoded\_To\_File()}{Write\_Encoded\_To\_File()}}
+{\footnotesize\ttfamily void Write\+\_\+\+Encoded\+\_\+\+To\+\_\+\+File (\begin{DoxyParamCaption}\item[{int}]{size\+\_\+of\+\_\+file,  }\item[{unsigned char \texorpdfstring{$\ast$}{*}}]{bytes,  }\item[{unsigned short}]{conversion\+\_\+array\mbox{[}256\mbox{]}\mbox{[}2\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Convert each byte of the file into its compressed form and write the whole into the compressed file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em size\+\_\+of\+\_\+file} & The size of the file (the length of the bytes array) \\
+\hline
+{\em bytes} & All the bytes of the file to compress \\
+\hline
+{\em conversion\+\_\+array} & The array that enables us to convert each byte into its compressed form \\
+\hline
+\end{DoxyParams}

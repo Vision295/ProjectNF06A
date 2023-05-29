@@ -1,26 +1,76 @@
 \doxysection{C\+:/\+Users/theop/\+Documents/\+\_\+\+Perso/\+\_\+\+UTT/\+NF06\+A/\+Project\+NF06\+A/\+Project/decoder.c File Reference}
 \hypertarget{decoder_8c}{}\label{decoder_8c}\index{C:/Users/theop/Documents/\_Perso/\_UTT/NF06A/ProjectNF06A/Project/decoder.c@{C:/Users/theop/Documents/\_Perso/\_UTT/NF06A/ProjectNF06A/Project/decoder.c}}
+
+
+The file decoder that uses the Huffman Coding Algorithm.  
+
+
 {\ttfamily \#include $<$stdio.\+h$>$}\newline
 {\ttfamily \#include $<$stdlib.\+h$>$}\newline
 \doxysubsubsection*{Data Structures}
 \begin{DoxyCompactItemize}
 \item 
 struct \mbox{\hyperlink{struct_node}{Node}}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em An element of the Huffman Tree weight is the number of occurencies in the file of the byte represented by the \doxylink{struct_node}{Node} byte is the byte stored by the \doxylink{struct_node}{Node} (in case the \doxylink{struct_node}{Node} is a \"{}leaf\"{} of the tree) left and right point to other Nodes, the one under it in the tree (only if \doxylink{struct_node}{Node} is not a \"{}leaf\"{}) \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
 struct \mbox{\hyperlink{struct_node}{Node}} \mbox{\hyperlink{decoder_8c_a6827dd16daa3ce1334caa30e60a2e554}{Create\+\_\+\+Node}} (unsigned char byte, int weight, struct \mbox{\hyperlink{struct_node}{Node}} \texorpdfstring{$\ast$}{*}left, struct \mbox{\hyperlink{struct_node}{Node}} \texorpdfstring{$\ast$}{*}right)
-\item 
+\begin{DoxyCompactList}\small\item\em Creates a struct \doxylink{struct_node}{Node} from all its parameters. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{decoder_8c_ac4752224592b7638524e36424c021a27}{Insertion\+\_\+\+Sort}} (struct \mbox{\hyperlink{struct_node}{Node}} \texorpdfstring{$\ast$}{*}Node\+\_\+\+List, int n)
-\item 
-void \mbox{\hyperlink{decoder_8c_a9604ea70e4a68d1b83a9b470a5fe855c}{Visit\+\_\+\+Tree\+\_\+\+To\+\_\+\+Get\+\_\+\+Encoding}} (struct \mbox{\hyperlink{struct_node}{Node}} Node\+\_\+to\+\_\+visit, unsigned short conversion\+\_\+array\mbox{[}256\mbox{]}\mbox{[}2\mbox{]}, unsigned short current\+\_\+bin\+\_\+code, unsigned char n\+\_\+bits\+\_\+curr\+\_\+bit\+\_\+code, int bit\+\_\+to\+\_\+add)
-\item 
+\begin{DoxyCompactList}\small\item\em Sorts the Node\+\_\+\+List by ascending order of frequencies, knowing that the list is already sorted, except for the last element. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{decoder_8c_ac02ae24203f5de237aaa7b1661129cb5}{Create\+\_\+\+Huffman\+\_\+\+Tree}} (int n\+\_\+diff\+\_\+bytes, struct \mbox{\hyperlink{struct_node}{Node}} \texorpdfstring{$\ast$}{*}Node\+\_\+list, struct \mbox{\hyperlink{struct_node}{Node}} \texorpdfstring{$\ast$}{*}memory\+\_\+nodes)
+\begin{DoxyCompactList}\small\item\em From the sorted list of Nodes, create the Huffman Tree, according to the Huffman Coding Algorithm. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{decoder_8c_aa3047f42f41db5c228975219ede39276}{Read\+\_\+\+Size}} (FILE \texorpdfstring{$\ast$}{*}encoded\+\_\+file)
+\begin{DoxyCompactList}\small\item\em Read the size of the encoded file. \end{DoxyCompactList}\item 
+unsigned char \mbox{\hyperlink{decoder_8c_a7fbd0efe8269bebd8ca1d7bc3f5f7672}{Read\+\_\+\+Padding\+\_\+\+Zeroes}} (FILE \texorpdfstring{$\ast$}{*}encoded\+\_\+file)
+\begin{DoxyCompactList}\small\item\em Read the number of padding zeroes added by the encoder to the penultimate byte For more details about padding zeroes, see \doxylink{encoder_8c}{encoder.\+c}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{decoder_8c_a6179ffb8c2995ab2d286fa0012b6d6ba}{Decode\+\_\+\+Encoded\+\_\+\+File}} (int size\+\_\+of\+\_\+file, int file\+\_\+type, unsigned char padding\+\_\+zeroes, unsigned char \texorpdfstring{$\ast$}{*}bytes, struct \mbox{\hyperlink{struct_node}{Node}} \texorpdfstring{$\ast$}{*}Node\+\_\+list)
+\begin{DoxyCompactList}\small\item\em From the Huffman Tree that we\textquotesingle{}ve rebuilt and all the bytes of the encoded file, decode it by going through the Tree. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{decoder_8c_a720e5308189304df7b08d0bd997a05f2}{Read\+\_\+\+Encoded\+\_\+\+Bytes}} (FILE \texorpdfstring{$\ast$}{*}encoded\+\_\+file, int size\+\_\+of\+\_\+file, unsigned char \texorpdfstring{$\ast$}{*}bytes)
+\begin{DoxyCompactList}\small\item\em Read and store the bytes of the encoded file. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{decoder_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}} ()
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Read the conversion file to rebuild the Huffman Tree, read the encoded file and decoded it thanks to the Huffman Tree, and then writes the decoded file into a new file ~\newline
+ \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The file decoder that uses the Huffman Coding Algorithm. 
+
+\begin{DoxyAuthor}{Author}
+Lucas SCHUMMER 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+28/05/2023
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2023 
+\end{DoxyCopyright}
 
 
 \doxysubsection{Function Documentation}
+\Hypertarget{decoder_8c_ac02ae24203f5de237aaa7b1661129cb5}\label{decoder_8c_ac02ae24203f5de237aaa7b1661129cb5} 
+\index{decoder.c@{decoder.c}!Create\_Huffman\_Tree@{Create\_Huffman\_Tree}}
+\index{Create\_Huffman\_Tree@{Create\_Huffman\_Tree}!decoder.c@{decoder.c}}
+\doxysubsubsection{\texorpdfstring{Create\_Huffman\_Tree()}{Create\_Huffman\_Tree()}}
+{\footnotesize\ttfamily void Create\+\_\+\+Huffman\+\_\+\+Tree (\begin{DoxyParamCaption}\item[{int}]{n\+\_\+diff\+\_\+bytes,  }\item[{struct \mbox{\hyperlink{struct_node}{Node}} \texorpdfstring{$\ast$}{*}}]{Node\+\_\+list,  }\item[{struct \mbox{\hyperlink{struct_node}{Node}} \texorpdfstring{$\ast$}{*}}]{memory\+\_\+nodes }\end{DoxyParamCaption})}
+
+
+
+From the sorted list of Nodes, create the Huffman Tree, according to the Huffman Coding Algorithm. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em n\+\_\+diff\+\_\+bytes} & The number of different bytes (the length of the diff\+\_\+bytes array) \\
+\hline
+{\em Node\+\_\+list} & The array of struct Nodes, sorted by frequencies \\
+\hline
+{\em memory\+\_\+nodes} & An array of struct Nodes, used to store the Nodes we remove from the Nodes\+\_\+\+List (according to the Huffman Coding Algorithm) \\
+\hline
+\end{DoxyParams}
 \Hypertarget{decoder_8c_a6827dd16daa3ce1334caa30e60a2e554}\label{decoder_8c_a6827dd16daa3ce1334caa30e60a2e554} 
 \index{decoder.c@{decoder.c}!Create\_Node@{Create\_Node}}
 \index{Create\_Node@{Create\_Node}!decoder.c@{decoder.c}}
@@ -29,8 +79,45 @@ int \mbox{\hyperlink{decoder_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}} ()
 
 
 
-Definition at line \mbox{\hyperlink{decoder_8c_source_l00014}{14}} of file \mbox{\hyperlink{decoder_8c_source}{decoder.\+c}}.
+Creates a struct \doxylink{struct_node}{Node} from all its parameters. 
 
+
+\begin{DoxyParams}{Parameters}
+{\em byte} & The byte represented by the \doxylink{struct_node}{Node} (only if it\textquotesingle{}s a \"{}leaf\"{} of the tree, otherwise 0 (we will never use it in this case anyway)) \\
+\hline
+{\em weight} & If the \doxylink{struct_node}{Node} is a leaf, the weight is the number of occurencies in the file of the byte represented by the byte. Otherwise, it is the sum of the weights of the Nodes under it. \\
+\hline
+{\em left} & Points to another \doxylink{struct_node}{Node}, which is lower in the tree. (NULL if the \doxylink{struct_node}{Node} is a \"{}leaf\"{}) \\
+\hline
+{\em right} & Points to another \doxylink{struct_node}{Node}, which is lower in the tree. (NULL if the \doxylink{struct_node}{Node} is a \"{}leaf\"{})\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The struct \doxylink{struct_node}{Node} created 
+\end{DoxyReturn}
+\Hypertarget{decoder_8c_a6179ffb8c2995ab2d286fa0012b6d6ba}\label{decoder_8c_a6179ffb8c2995ab2d286fa0012b6d6ba} 
+\index{decoder.c@{decoder.c}!Decode\_Encoded\_File@{Decode\_Encoded\_File}}
+\index{Decode\_Encoded\_File@{Decode\_Encoded\_File}!decoder.c@{decoder.c}}
+\doxysubsubsection{\texorpdfstring{Decode\_Encoded\_File()}{Decode\_Encoded\_File()}}
+{\footnotesize\ttfamily void Decode\+\_\+\+Encoded\+\_\+\+File (\begin{DoxyParamCaption}\item[{int}]{size\+\_\+of\+\_\+file,  }\item[{int}]{file\+\_\+type,  }\item[{unsigned char}]{padding\+\_\+zeroes,  }\item[{unsigned char \texorpdfstring{$\ast$}{*}}]{bytes,  }\item[{struct \mbox{\hyperlink{struct_node}{Node}} \texorpdfstring{$\ast$}{*}}]{Node\+\_\+list }\end{DoxyParamCaption})}
+
+
+
+From the Huffman Tree that we\textquotesingle{}ve rebuilt and all the bytes of the encoded file, decode it by going through the Tree. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em size\+\_\+of\+\_\+file} & The size (in bytes) of the encoded file \\
+\hline
+{\em file\+\_\+type} & A character giving the format of the file, so that we can open the decoding file in the right format For more details, see \doxylink{encoder_8c}{encoder.\+c} \\
+\hline
+{\em padding\+\_\+zeroes} & The number of padding zeroes in the penultimate byte \\
+\hline
+{\em bytes} & The bytes of the compressed file \\
+\hline
+{\em Node\+\_\+list} & The list of Nodes, containing only one last element at this point, which is the head of the tree \\
+\hline
+\end{DoxyParams}
 \Hypertarget{decoder_8c_ac4752224592b7638524e36424c021a27}\label{decoder_8c_ac4752224592b7638524e36424c021a27} 
 \index{decoder.c@{decoder.c}!Insertion\_Sort@{Insertion\_Sort}}
 \index{Insertion\_Sort@{Insertion\_Sort}!decoder.c@{decoder.c}}
@@ -39,8 +126,15 @@ Definition at line \mbox{\hyperlink{decoder_8c_source_l00014}{14}} of file \mbox
 
 
 
-Definition at line \mbox{\hyperlink{decoder_8c_source_l00023}{23}} of file \mbox{\hyperlink{decoder_8c_source}{decoder.\+c}}.
+Sorts the Node\+\_\+\+List by ascending order of frequencies, knowing that the list is already sorted, except for the last element. 
 
+
+\begin{DoxyParams}{Parameters}
+{\em Node\+\_\+\+List} & Array of struct Nodes, that we want to sort by frequencies \\
+\hline
+{\em n} & The length of the array Nodes\+\_\+\+List \\
+\hline
+\end{DoxyParams}
 \Hypertarget{decoder_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}\label{decoder_8c_ae66f6b31b5ad750f1fe042a706a4e3d4} 
 \index{decoder.c@{decoder.c}!main@{main}}
 \index{main@{main}!decoder.c@{decoder.c}}
@@ -49,15 +143,64 @@ Definition at line \mbox{\hyperlink{decoder_8c_source_l00023}{23}} of file \mbox
 
 
 
-Definition at line \mbox{\hyperlink{decoder_8c_source_l00073}{73}} of file \mbox{\hyperlink{decoder_8c_source}{decoder.\+c}}.
+Read the conversion file to rebuild the Huffman Tree, read the encoded file and decoded it thanks to the Huffman Tree, and then writes the decoded file into a new file ~\newline
+ 
 
-\Hypertarget{decoder_8c_a9604ea70e4a68d1b83a9b470a5fe855c}\label{decoder_8c_a9604ea70e4a68d1b83a9b470a5fe855c} 
-\index{decoder.c@{decoder.c}!Visit\_Tree\_To\_Get\_Encoding@{Visit\_Tree\_To\_Get\_Encoding}}
-\index{Visit\_Tree\_To\_Get\_Encoding@{Visit\_Tree\_To\_Get\_Encoding}!decoder.c@{decoder.c}}
-\doxysubsubsection{\texorpdfstring{Visit\_Tree\_To\_Get\_Encoding()}{Visit\_Tree\_To\_Get\_Encoding()}}
-{\footnotesize\ttfamily void Visit\+\_\+\+Tree\+\_\+\+To\+\_\+\+Get\+\_\+\+Encoding (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{struct_node}{Node}}}]{Node\+\_\+to\+\_\+visit,  }\item[{unsigned short}]{conversion\+\_\+array\mbox{[}256\mbox{]}\mbox{[}2\mbox{]},  }\item[{unsigned short}]{current\+\_\+bin\+\_\+code,  }\item[{unsigned char}]{n\+\_\+bits\+\_\+curr\+\_\+bit\+\_\+code,  }\item[{int}]{bit\+\_\+to\+\_\+add }\end{DoxyParamCaption})}
+\begin{DoxyReturn}{Returns}
+0 if there were no erros in the process 
+\end{DoxyReturn}
+\Hypertarget{decoder_8c_a720e5308189304df7b08d0bd997a05f2}\label{decoder_8c_a720e5308189304df7b08d0bd997a05f2} 
+\index{decoder.c@{decoder.c}!Read\_Encoded\_Bytes@{Read\_Encoded\_Bytes}}
+\index{Read\_Encoded\_Bytes@{Read\_Encoded\_Bytes}!decoder.c@{decoder.c}}
+\doxysubsubsection{\texorpdfstring{Read\_Encoded\_Bytes()}{Read\_Encoded\_Bytes()}}
+{\footnotesize\ttfamily void Read\+\_\+\+Encoded\+\_\+\+Bytes (\begin{DoxyParamCaption}\item[{FILE \texorpdfstring{$\ast$}{*}}]{encoded\+\_\+file,  }\item[{int}]{size\+\_\+of\+\_\+file,  }\item[{unsigned char \texorpdfstring{$\ast$}{*}}]{bytes }\end{DoxyParamCaption})}
 
 
 
-Definition at line \mbox{\hyperlink{decoder_8c_source_l00039}{39}} of file \mbox{\hyperlink{decoder_8c_source}{decoder.\+c}}.
+Read and store the bytes of the encoded file. 
 
+
+\begin{DoxyParams}{Parameters}
+{\em encoded\+\_\+file} & The encoded file, opened in binary read mode \\
+\hline
+{\em size\+\_\+of\+\_\+file} & The size of the encoded file (in bytes) \\
+\hline
+{\em bytes} & The array of bytes where we store the bytes of the file that we read \\
+\hline
+\end{DoxyParams}
+\Hypertarget{decoder_8c_a7fbd0efe8269bebd8ca1d7bc3f5f7672}\label{decoder_8c_a7fbd0efe8269bebd8ca1d7bc3f5f7672} 
+\index{decoder.c@{decoder.c}!Read\_Padding\_Zeroes@{Read\_Padding\_Zeroes}}
+\index{Read\_Padding\_Zeroes@{Read\_Padding\_Zeroes}!decoder.c@{decoder.c}}
+\doxysubsubsection{\texorpdfstring{Read\_Padding\_Zeroes()}{Read\_Padding\_Zeroes()}}
+{\footnotesize\ttfamily unsigned char Read\+\_\+\+Padding\+\_\+\+Zeroes (\begin{DoxyParamCaption}\item[{FILE \texorpdfstring{$\ast$}{*}}]{encoded\+\_\+file }\end{DoxyParamCaption})}
+
+
+
+Read the number of padding zeroes added by the encoder to the penultimate byte For more details about padding zeroes, see \doxylink{encoder_8c}{encoder.\+c}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em encoded\+\_\+file} & The encoded binary file, opened in read mode \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of padding zeroes (between 0 and 7) added to the penultimate byte 
+\end{DoxyReturn}
+\Hypertarget{decoder_8c_aa3047f42f41db5c228975219ede39276}\label{decoder_8c_aa3047f42f41db5c228975219ede39276} 
+\index{decoder.c@{decoder.c}!Read\_Size@{Read\_Size}}
+\index{Read\_Size@{Read\_Size}!decoder.c@{decoder.c}}
+\doxysubsubsection{\texorpdfstring{Read\_Size()}{Read\_Size()}}
+{\footnotesize\ttfamily int Read\+\_\+\+Size (\begin{DoxyParamCaption}\item[{FILE \texorpdfstring{$\ast$}{*}}]{encoded\+\_\+file }\end{DoxyParamCaption})}
+
+
+
+Read the size of the encoded file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em encoded\+\_\+file} & The encoded binary file, already opened in read mode\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The size of the file (in bytes) 
+\end{DoxyReturn}

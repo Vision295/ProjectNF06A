@@ -77,29 +77,153 @@ $(function() {
   <div class="headertitle"><div class="title">C:/Users/theop/Documents/_Perso/_UTT/NF06A/ProjectNF06A/Project/encoder.c File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>The file encoder that uses the Huffman Coding Algorithm.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;stdio.h&gt;</code><br />
 <code>#include &lt;stdlib.h&gt;</code><br />
 <code>#include &lt;math.h&gt;</code><br />
-</div>
-<p><a href="encoder_8c_source.html">Go to the source code of this file.</a></p>
-<table class="memberdecls">
+<code>#include &lt;string.h&gt;</code><br />
+</div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Data Structures</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_node.html">Node</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">An element of the Huffman Tree weight is the number of occurencies in the file of the byte represented by the <a class="el" href="struct_node.html" title="An element of the Huffman Tree weight is the number of occurencies in the file of the byte represente...">Node</a> byte is the byte stored by the <a class="el" href="struct_node.html" title="An element of the Huffman Tree weight is the number of occurencies in the file of the byte represente...">Node</a> (in case the <a class="el" href="struct_node.html" title="An element of the Huffman Tree weight is the number of occurencies in the file of the byte represente...">Node</a> is a "leaf" of the tree) left and right point to other Nodes, the one under it in the tree (only if <a class="el" href="struct_node.html" title="An element of the Huffman Tree weight is the number of occurencies in the file of the byte represente...">Node</a> is not a "leaf")  <a href="struct_node.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a6827dd16daa3ce1334caa30e60a2e554"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="struct_node.html">Node</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="encoder_8c.html#a6827dd16daa3ce1334caa30e60a2e554">Create_Node</a> (unsigned char byte, int weight, struct <a class="el" href="struct_node.html">Node</a> *left, struct <a class="el" href="struct_node.html">Node</a> *right)</td></tr>
+<tr class="memdesc:a6827dd16daa3ce1334caa30e60a2e554"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a struct <a class="el" href="struct_node.html" title="An element of the Huffman Tree weight is the number of occurencies in the file of the byte represente...">Node</a> from all its parameters.  <br /></td></tr>
 <tr class="separator:a6827dd16daa3ce1334caa30e60a2e554"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9e7e8985eb44f3a3f73b19e57169f54a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="encoder_8c.html#a9e7e8985eb44f3a3f73b19e57169f54a">Read_Bytes</a> (int size_of_file, unsigned char *bytes, FILE *fp)</td></tr>
+<tr class="memdesc:a9e7e8985eb44f3a3f73b19e57169f54a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read the file to encode and store its bytes into an array.  <br /></td></tr>
+<tr class="separator:a9e7e8985eb44f3a3f73b19e57169f54a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:add31ecc004cda4a6f1d38b95cb10e0e6"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="encoder_8c.html#add31ecc004cda4a6f1d38b95cb10e0e6">Get_Diff_Bytes</a> (int size_of_file, unsigned char *bytes, unsigned char *diff_bytes)</td></tr>
+<tr class="memdesc:add31ecc004cda4a6f1d38b95cb10e0e6"><td class="mdescLeft">&#160;</td><td class="mdescRight">From the read bytes of the file to compress, extract all the different bytes present and get the amount of different bytes.  <br /></td></tr>
+<tr class="separator:add31ecc004cda4a6f1d38b95cb10e0e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa8cb21192fb2c276cf26fcdddedbdffc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="encoder_8c.html#aa8cb21192fb2c276cf26fcdddedbdffc">Get_Bytes_Frequencies</a> (int size_of_file, int n_diff_bytes, unsigned char *bytes, unsigned char *diff_bytes, int *frequencies)</td></tr>
+<tr class="memdesc:aa8cb21192fb2c276cf26fcdddedbdffc"><td class="mdescLeft">&#160;</td><td class="mdescRight">From the bytes of the file and the list of different bytes, count the number of occurencies of each byte in the whole file.  <br /></td></tr>
+<tr class="separator:aa8cb21192fb2c276cf26fcdddedbdffc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3277b192731bc36f49e3eaadfcc90dc8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="encoder_8c.html#a3277b192731bc36f49e3eaadfcc90dc8">Bubble_Sort</a> (int n_diff_bytes, unsigned char *diff_bytes, int *frequencies)</td></tr>
+<tr class="memdesc:a3277b192731bc36f49e3eaadfcc90dc8"><td class="mdescLeft">&#160;</td><td class="mdescRight">A kind of "double" bubble sort : we sort diff_bytes and frequencies by frequencies(ascending order). The arrays stay "symetrical" frequencies[i] still corresponds to the occurencies of the byte diff_bytes[i] in the file <br  />
+  <br /></td></tr>
+<tr class="separator:a3277b192731bc36f49e3eaadfcc90dc8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af09f65e41ee524e7bf79f574aa61619d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="encoder_8c.html#af09f65e41ee524e7bf79f574aa61619d">Write_Compression_File</a> (int n_diff_bytes, char file_type, unsigned char *diff_bytes, int *frequencies)</td></tr>
+<tr class="memdesc:af09f65e41ee524e7bf79f574aa61619d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write the file to transfer to the decoder (in addition to the compressed file) This file contains the information necessary for the decoder to rebuild the tree.  <br /></td></tr>
+<tr class="separator:af09f65e41ee524e7bf79f574aa61619d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac4752224592b7638524e36424c021a27"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="encoder_8c.html#ac4752224592b7638524e36424c021a27">Insertion_Sort</a> (struct <a class="el" href="struct_node.html">Node</a> *Node_List, int n)</td></tr>
+<tr class="memdesc:ac4752224592b7638524e36424c021a27"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sorts the Node_List by ascending order of frequencies, knowing that the list is already sorted, except for the last element.  <br /></td></tr>
 <tr class="separator:ac4752224592b7638524e36424c021a27"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac02ae24203f5de237aaa7b1661129cb5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="encoder_8c.html#ac02ae24203f5de237aaa7b1661129cb5">Create_Huffman_Tree</a> (int n_diff_bytes, struct <a class="el" href="struct_node.html">Node</a> *Node_list, struct <a class="el" href="struct_node.html">Node</a> *memory_nodes)</td></tr>
+<tr class="memdesc:ac02ae24203f5de237aaa7b1661129cb5"><td class="mdescLeft">&#160;</td><td class="mdescRight">From the sorted list of Nodes, create the Huffman Tree, according to the Huffman Coding Algorithm.  <br /></td></tr>
+<tr class="separator:ac02ae24203f5de237aaa7b1661129cb5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9604ea70e4a68d1b83a9b470a5fe855c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="encoder_8c.html#a9604ea70e4a68d1b83a9b470a5fe855c">Visit_Tree_To_Get_Encoding</a> (struct <a class="el" href="struct_node.html">Node</a> Node_to_visit, unsigned short conversion_array[256][2], unsigned short current_bin_code, unsigned char n_bits_curr_bit_code, int bit_to_add)</td></tr>
+<tr class="memdesc:a9604ea70e4a68d1b83a9b470a5fe855c"><td class="mdescLeft">&#160;</td><td class="mdescRight">A recursive fonction used to visit the entire Huffman Tree once it's been constructed, so that we can get the encoding of each different byte (the encoding of a byte corresponds to the path from the "head" of the tree to the struct <a class="el" href="struct_node.html" title="An element of the Huffman Tree weight is the number of occurencies in the file of the byte represente...">Node</a> (a leaf of the tree) containing the byte)  <br /></td></tr>
 <tr class="separator:a9604ea70e4a68d1b83a9b470a5fe855c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2091161629435080805826b4ae434daf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="encoder_8c.html#a2091161629435080805826b4ae434daf">Write_Encoded_To_File</a> (int size_of_file, unsigned char *bytes, unsigned short conversion_array[256][2])</td></tr>
+<tr class="memdesc:a2091161629435080805826b4ae434daf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert each byte of the file into its compressed form and write the whole into the compressed file.  <br /></td></tr>
+<tr class="separator:a2091161629435080805826b4ae434daf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae66f6b31b5ad750f1fe042a706a4e3d4"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="encoder_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4">main</a> ()</td></tr>
+<tr class="memdesc:ae66f6b31b5ad750f1fe042a706a4e3d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read from file_to_compress.txt the name of the file to compress, open this file and read its bytes. Create the Huffman Tree according to the Huffman Coding Algorithm. Go through the tree to get the bit sequence corresponding to the each byte. Write the compressed version of each byte into compressed.bin, as well as the information necessary for the decoder to rebuild the tree in conversion.bin.  <br /></td></tr>
 <tr class="separator:ae66f6b31b5ad750f1fe042a706a4e3d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>The file encoder that uses the Huffman Coding Algorithm. </p>
+<dl class="section author"><dt>Author</dt><dd>Lucas SCHUMMER </dd></dl>
+<dl class="section version"><dt>Version</dt><dd>1.0 </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>28/05/2023</dd></dl>
+<dl class="section copyright"><dt>Copyright</dt><dd>Copyright (c) 2023 </dd></dl>
+</div><h2 class="groupheader">Function Documentation</h2>
+<a id="a3277b192731bc36f49e3eaadfcc90dc8" name="a3277b192731bc36f49e3eaadfcc90dc8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3277b192731bc36f49e3eaadfcc90dc8">&#9670;&#160;</a></span>Bubble_Sort()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Bubble_Sort </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>n_diff_bytes</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned char *&#160;</td>
+          <td class="paramname"><em>diff_bytes</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>frequencies</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A kind of "double" bubble sort : we sort diff_bytes and frequencies by frequencies(ascending order). The arrays stay "symetrical" frequencies[i] still corresponds to the occurencies of the byte diff_bytes[i] in the file <br  />
+ </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">n_diff_bytes</td><td>The number of different bytes (the length of the diff_bytes array) </td></tr>
+    <tr><td class="paramname">diff_bytes</td><td>All the different bytes present in the file </td></tr>
+    <tr><td class="paramname">frequencies</td><td>The number of occurencies of each byte present in the file </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ac02ae24203f5de237aaa7b1661129cb5" name="ac02ae24203f5de237aaa7b1661129cb5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac02ae24203f5de237aaa7b1661129cb5">&#9670;&#160;</a></span>Create_Huffman_Tree()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Create_Huffman_Tree </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>n_diff_bytes</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">struct <a class="el" href="struct_node.html">Node</a> *&#160;</td>
+          <td class="paramname"><em>Node_list</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">struct <a class="el" href="struct_node.html">Node</a> *&#160;</td>
+          <td class="paramname"><em>memory_nodes</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>From the sorted list of Nodes, create the Huffman Tree, according to the Huffman Coding Algorithm. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">n_diff_bytes</td><td>The number of different bytes (the length of the diff_bytes array) </td></tr>
+    <tr><td class="paramname">Node_list</td><td>The array of struct Nodes, sorted by frequencies </td></tr>
+    <tr><td class="paramname">memory_nodes</td><td>An array of struct Nodes, used to store the Nodes we remove from the Nodes_List (according to the Huffman Coding Algorithm) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="a6827dd16daa3ce1334caa30e60a2e554" name="a6827dd16daa3ce1334caa30e60a2e554"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a6827dd16daa3ce1334caa30e60a2e554">&#9670;&#160;</a></span>Create_Node()</h2>
 
@@ -138,7 +262,120 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="encoder_8c_source.html#l00012">12</a> of file <a class="el" href="encoder_8c_source.html">encoder.c</a>.</p>
+<p>Creates a struct <a class="el" href="struct_node.html" title="An element of the Huffman Tree weight is the number of occurencies in the file of the byte represente...">Node</a> from all its parameters. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">byte</td><td>The byte represented by the <a class="el" href="struct_node.html" title="An element of the Huffman Tree weight is the number of occurencies in the file of the byte represente...">Node</a> (only if it's a "leaf" of the tree, otherwise 0 (we will never use it in this case anyway)) </td></tr>
+    <tr><td class="paramname">weight</td><td>If the <a class="el" href="struct_node.html" title="An element of the Huffman Tree weight is the number of occurencies in the file of the byte represente...">Node</a> is a leaf, the weight is the number of occurencies in the file of the byte represented by the byte. Otherwise, it is the sum of the weights of the Nodes under it. </td></tr>
+    <tr><td class="paramname">left</td><td>Points to another <a class="el" href="struct_node.html" title="An element of the Huffman Tree weight is the number of occurencies in the file of the byte represente...">Node</a>, which is lower in the tree. (NULL if the <a class="el" href="struct_node.html" title="An element of the Huffman Tree weight is the number of occurencies in the file of the byte represente...">Node</a> is a "leaf") </td></tr>
+    <tr><td class="paramname">right</td><td>Points to another <a class="el" href="struct_node.html" title="An element of the Huffman Tree weight is the number of occurencies in the file of the byte represente...">Node</a>, which is lower in the tree. (NULL if the <a class="el" href="struct_node.html" title="An element of the Huffman Tree weight is the number of occurencies in the file of the byte represente...">Node</a> is a "leaf")</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The struct <a class="el" href="struct_node.html" title="An element of the Huffman Tree weight is the number of occurencies in the file of the byte represente...">Node</a> created </dd></dl>
+
+</div>
+</div>
+<a id="aa8cb21192fb2c276cf26fcdddedbdffc" name="aa8cb21192fb2c276cf26fcdddedbdffc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa8cb21192fb2c276cf26fcdddedbdffc">&#9670;&#160;</a></span>Get_Bytes_Frequencies()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Get_Bytes_Frequencies </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>size_of_file</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>n_diff_bytes</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned char *&#160;</td>
+          <td class="paramname"><em>bytes</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned char *&#160;</td>
+          <td class="paramname"><em>diff_bytes</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>frequencies</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>From the bytes of the file and the list of different bytes, count the number of occurencies of each byte in the whole file. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">size_of_file</td><td>The size of the file (the length of the bytes array) </td></tr>
+    <tr><td class="paramname">n_diff_bytes</td><td>The number of different bytes (the length of the diff_bytes array) </td></tr>
+    <tr><td class="paramname">bytes</td><td>All the bytes of the file to compress </td></tr>
+    <tr><td class="paramname">diff_bytes</td><td>All the different bytes present in the file </td></tr>
+    <tr><td class="paramname">frequencies</td><td>Array of integers to store the number of occurencies of each byte. It is of length n_diff_bytes (max 256) The frequencies and diff_bytes arrays are "symetrical" : For any index i between 0 and n_diff_bytes-1 diff_bytes[i] is the value of the byte, and frequencies[i] how many times you find it in the file </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="add31ecc004cda4a6f1d38b95cb10e0e6" name="add31ecc004cda4a6f1d38b95cb10e0e6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#add31ecc004cda4a6f1d38b95cb10e0e6">&#9670;&#160;</a></span>Get_Diff_Bytes()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Get_Diff_Bytes </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>size_of_file</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned char *&#160;</td>
+          <td class="paramname"><em>bytes</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned char *&#160;</td>
+          <td class="paramname"><em>diff_bytes</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>From the read bytes of the file to compress, extract all the different bytes present and get the amount of different bytes. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">size_of_file</td><td>The size of the file (the length of the bytes array) </td></tr>
+    <tr><td class="paramname">bytes</td><td>Array of bytes read from the file to compress </td></tr>
+    <tr><td class="paramname">diff_bytes</td><td>Array of bytes containing all the different bytes we've read from the file</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The amount (integer) of different bytes in the file (from 0 to 256) </dd></dl>
 
 </div>
 </div>
@@ -168,7 +405,14 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="encoder_8c_source.html#l00021">21</a> of file <a class="el" href="encoder_8c_source.html">encoder.c</a>.</p>
+<p>Sorts the Node_List by ascending order of frequencies, knowing that the list is already sorted, except for the last element. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">Node_List</td><td>Array of struct Nodes, that we want to sort by frequencies </td></tr>
+    <tr><td class="paramname">n</td><td>The length of the array Nodes_List </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -187,7 +431,52 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="encoder_8c_source.html#l00067">67</a> of file <a class="el" href="encoder_8c_source.html">encoder.c</a>.</p>
+<p>Read from file_to_compress.txt the name of the file to compress, open this file and read its bytes. Create the Huffman Tree according to the Huffman Coding Algorithm. Go through the tree to get the bit sequence corresponding to the each byte. Write the compressed version of each byte into compressed.bin, as well as the information necessary for the decoder to rebuild the tree in conversion.bin. </p>
+<dl class="section return"><dt>Returns</dt><dd>0 if there were no errors in the process </dd></dl>
+
+</div>
+</div>
+<a id="a9e7e8985eb44f3a3f73b19e57169f54a" name="a9e7e8985eb44f3a3f73b19e57169f54a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9e7e8985eb44f3a3f73b19e57169f54a">&#9670;&#160;</a></span>Read_Bytes()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Read_Bytes </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>size_of_file</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned char *&#160;</td>
+          <td class="paramname"><em>bytes</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">FILE *&#160;</td>
+          <td class="paramname"><em>fp</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Read the file to encode and store its bytes into an array. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">size_of_file</td><td>The number of bytes of the file (which is also the length of the array of bytes) </td></tr>
+    <tr><td class="paramname">bytes</td><td>The dynamically allocated bytes array, where we store the data from the file to compress </td></tr>
+    <tr><td class="paramname">fp</td><td>The file to compress, already open in read(binary) mode </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -235,7 +524,112 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="encoder_8c_source.html#l00037">37</a> of file <a class="el" href="encoder_8c_source.html">encoder.c</a>.</p>
+<p>A recursive fonction used to visit the entire Huffman Tree once it's been constructed, so that we can get the encoding of each different byte (the encoding of a byte corresponds to the path from the "head" of the tree to the struct <a class="el" href="struct_node.html" title="An element of the Huffman Tree weight is the number of occurencies in the file of the byte represente...">Node</a> (a leaf of the tree) containing the byte) </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">Node_to_visit</td><td>The struct <a class="el" href="struct_node.html" title="An element of the Huffman Tree weight is the number of occurencies in the file of the byte represente...">Node</a> we are currently visiting. Initially, it is the "head" of the tree (i.e the last element in the Nodes_List while building the tree) </td></tr>
+    <tr><td class="paramname">conversion_array</td><td>A 2D array where we store the encoding of each byte. We store first the bit size of the encoding (i.e the number of Nodes we've went through before reaching the corresponding <a class="el" href="struct_node.html" title="An element of the Huffman Tree weight is the number of occurencies in the file of the byte represente...">Node</a>), and then the encoding in itself (over 2 bytes) Example : At conversion_array[10][1] you will find the encoding for the byte 00001010 (10 in binary) which can be: 00000000 00101110 . And at conversion_array[0] for example 7 (we only have to take into account the last 7 bits)</td></tr>
+    <tr><td class="paramname">current_bin_code</td><td>Going from the head of the tree, we add a 0 each time we go left down the tree, and a one if we go right current_bin_code contains the history of the way we've been through up until now When eventually we will reach a leaf, the current_bin_code will become the encodind of the corresponding byte (the byte stored by the <a class="el" href="struct_node.html" title="An element of the Huffman Tree weight is the number of occurencies in the file of the byte represente...">Node</a> at Node.byte) </td></tr>
+    <tr><td class="paramname">n_bits_curr_bit_code</td><td>The length of the current binary code (i.e the number of time we've went left or right up until now) </td></tr>
+    <tr><td class="paramname">bit_to_add</td><td>The bit to add to the current binary code (i.e 0 if we've just went left, 1 if it was right) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="af09f65e41ee524e7bf79f574aa61619d" name="af09f65e41ee524e7bf79f574aa61619d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af09f65e41ee524e7bf79f574aa61619d">&#9670;&#160;</a></span>Write_Compression_File()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Write_Compression_File </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>n_diff_bytes</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>file_type</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned char *&#160;</td>
+          <td class="paramname"><em>diff_bytes</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>frequencies</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Write the file to transfer to the decoder (in addition to the compressed file) This file contains the information necessary for the decoder to rebuild the tree. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">n_diff_bytes</td><td>The number of different bytes (the length of the diff_bytes array) </td></tr>
+    <tr><td class="paramname">file_type</td><td>An char giving the decoder the format of the encoded_file (49 for png, 50 for jpg...) (More details in the main function) </td></tr>
+    <tr><td class="paramname">diff_bytes</td><td>All the different bytes present in the file </td></tr>
+    <tr><td class="paramname">frequencies</td><td>The number of occurencies of each byte present in the file </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a2091161629435080805826b4ae434daf" name="a2091161629435080805826b4ae434daf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2091161629435080805826b4ae434daf">&#9670;&#160;</a></span>Write_Encoded_To_File()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Write_Encoded_To_File </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>size_of_file</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned char *&#160;</td>
+          <td class="paramname"><em>bytes</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned short&#160;</td>
+          <td class="paramname"><em>conversion_array</em>[256][2]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Convert each byte of the file into its compressed form and write the whole into the compressed file. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">size_of_file</td><td>The size of the file (the length of the bytes array) </td></tr>
+    <tr><td class="paramname">bytes</td><td>All the bytes of the file to compress </td></tr>
+    <tr><td class="paramname">conversion_array</td><td>The array that enables us to convert each byte into its compressed form </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

@@ -1,69 +1,31 @@
 \doxysection{Node Struct Reference}
 \hypertarget{struct_node}{}\label{struct_node}\index{Node@{Node}}
+
+
+An element of the Huffman Tree weight is the number of occurencies in the file of the byte represented by the \doxylink{struct_node}{Node} byte is the byte stored by the \doxylink{struct_node}{Node} (in case the \doxylink{struct_node}{Node} is a \"{}leaf\"{} of the tree) left and right point to other Nodes, the one under it in the tree (only if \doxylink{struct_node}{Node} is not a \"{}leaf\"{})  
+
+
 \doxysubsubsection*{Data Fields}
 \begin{DoxyCompactItemize}
 \item 
-int \mbox{\hyperlink{struct_node_aa01147b1f07072d246c76dc85d69df7c}{weight}}
+\Hypertarget{struct_node_aa01147b1f07072d246c76dc85d69df7c}\label{struct_node_aa01147b1f07072d246c76dc85d69df7c} 
+int {\bfseries weight}
 \item 
-unsigned char \mbox{\hyperlink{struct_node_a1581cde4f73c9a797ae1e7afcc1bb3de}{byte}}
+\Hypertarget{struct_node_a1581cde4f73c9a797ae1e7afcc1bb3de}\label{struct_node_a1581cde4f73c9a797ae1e7afcc1bb3de} 
+unsigned char {\bfseries byte}
 \item 
-struct \mbox{\hyperlink{struct_node}{Node}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{struct_node_aa70c4a561d6d1fd647db985a13bebee7}{right}}
+\Hypertarget{struct_node_aa70c4a561d6d1fd647db985a13bebee7}\label{struct_node_aa70c4a561d6d1fd647db985a13bebee7} 
+struct \mbox{\hyperlink{struct_node}{Node}} \texorpdfstring{$\ast$}{*} {\bfseries right}
 \item 
-struct \mbox{\hyperlink{struct_node}{Node}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{struct_node_ad9ac5c661d6245c88e3f377024906bd7}{left}}
+\Hypertarget{struct_node_ad9ac5c661d6245c88e3f377024906bd7}\label{struct_node_ad9ac5c661d6245c88e3f377024906bd7} 
+struct \mbox{\hyperlink{struct_node}{Node}} \texorpdfstring{$\ast$}{*} {\bfseries left}
 \end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
-
-
-Definition at line \mbox{\hyperlink{decoder_8c_source_l00007}{7}} of file \mbox{\hyperlink{decoder_8c_source}{decoder.\+c}}.
-
-
-
-\doxysubsection{Field Documentation}
-\Hypertarget{struct_node_a1581cde4f73c9a797ae1e7afcc1bb3de}\label{struct_node_a1581cde4f73c9a797ae1e7afcc1bb3de} 
-\index{Node@{Node}!byte@{byte}}
-\index{byte@{byte}!Node@{Node}}
-\doxysubsubsection{\texorpdfstring{byte}{byte}}
-{\footnotesize\ttfamily unsigned char byte}
-
-
-
-Definition at line \mbox{\hyperlink{decoder_8c_source_l00009}{9}} of file \mbox{\hyperlink{decoder_8c_source}{decoder.\+c}}.
-
-\Hypertarget{struct_node_ad9ac5c661d6245c88e3f377024906bd7}\label{struct_node_ad9ac5c661d6245c88e3f377024906bd7} 
-\index{Node@{Node}!left@{left}}
-\index{left@{left}!Node@{Node}}
-\doxysubsubsection{\texorpdfstring{left}{left}}
-{\footnotesize\ttfamily struct \mbox{\hyperlink{struct_node}{Node}} \texorpdfstring{$\ast$}{*} left}
-
-
-
-Definition at line \mbox{\hyperlink{decoder_8c_source_l00011}{11}} of file \mbox{\hyperlink{decoder_8c_source}{decoder.\+c}}.
-
-\Hypertarget{struct_node_aa70c4a561d6d1fd647db985a13bebee7}\label{struct_node_aa70c4a561d6d1fd647db985a13bebee7} 
-\index{Node@{Node}!right@{right}}
-\index{right@{right}!Node@{Node}}
-\doxysubsubsection{\texorpdfstring{right}{right}}
-{\footnotesize\ttfamily struct \mbox{\hyperlink{struct_node}{Node}} \texorpdfstring{$\ast$}{*} right}
-
-
-
-Definition at line \mbox{\hyperlink{decoder_8c_source_l00010}{10}} of file \mbox{\hyperlink{decoder_8c_source}{decoder.\+c}}.
-
-\Hypertarget{struct_node_aa01147b1f07072d246c76dc85d69df7c}\label{struct_node_aa01147b1f07072d246c76dc85d69df7c} 
-\index{Node@{Node}!weight@{weight}}
-\index{weight@{weight}!Node@{Node}}
-\doxysubsubsection{\texorpdfstring{weight}{weight}}
-{\footnotesize\ttfamily int weight}
-
-
-
-Definition at line \mbox{\hyperlink{decoder_8c_source_l00008}{8}} of file \mbox{\hyperlink{decoder_8c_source}{decoder.\+c}}.
-
-
+An element of the Huffman Tree weight is the number of occurencies in the file of the byte represented by the \doxylink{struct_node}{Node} byte is the byte stored by the \doxylink{struct_node}{Node} (in case the \doxylink{struct_node}{Node} is a \"{}leaf\"{} of the tree) left and right point to other Nodes, the one under it in the tree (only if \doxylink{struct_node}{Node} is not a \"{}leaf\"{}) 
 
 The documentation for this struct was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-C\+:/\+Users/theop/\+Documents/\+\_\+\+Perso/\+\_\+\+UTT/\+NF06\+A/\+Project\+NF06\+A/\+Project/decoder.\+c\item 
-C\+:/\+Users/theop/\+Documents/\+\_\+\+Perso/\+\_\+\+UTT/\+NF06\+A/\+Project\+NF06\+A/\+Project/encoder.\+c\end{DoxyCompactItemize}
+C\+:/\+Users/theop/\+Documents/\+\_\+\+Perso/\+\_\+\+UTT/\+NF06\+A/\+Project\+NF06\+A/\+Project/\mbox{\hyperlink{decoder_8c}{decoder.\+c}}\item 
+C\+:/\+Users/theop/\+Documents/\+\_\+\+Perso/\+\_\+\+UTT/\+NF06\+A/\+Project\+NF06\+A/\+Project/\mbox{\hyperlink{encoder_8c}{encoder.\+c}}\end{DoxyCompactItemize}

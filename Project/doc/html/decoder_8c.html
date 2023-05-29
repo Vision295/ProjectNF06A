@@ -77,28 +77,97 @@ $(function() {
   <div class="headertitle"><div class="title">C:/Users/theop/Documents/_Perso/_UTT/NF06A/ProjectNF06A/Project/decoder.c File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>The file decoder that uses the Huffman Coding Algorithm.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;stdio.h&gt;</code><br />
 <code>#include &lt;stdlib.h&gt;</code><br />
-</div>
-<p><a href="decoder_8c_source.html">Go to the source code of this file.</a></p>
-<table class="memberdecls">
+</div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Data Structures</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_node.html">Node</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">An element of the Huffman Tree weight is the number of occurencies in the file of the byte represented by the <a class="el" href="struct_node.html" title="An element of the Huffman Tree weight is the number of occurencies in the file of the byte represente...">Node</a> byte is the byte stored by the <a class="el" href="struct_node.html" title="An element of the Huffman Tree weight is the number of occurencies in the file of the byte represente...">Node</a> (in case the <a class="el" href="struct_node.html" title="An element of the Huffman Tree weight is the number of occurencies in the file of the byte represente...">Node</a> is a "leaf" of the tree) left and right point to other Nodes, the one under it in the tree (only if <a class="el" href="struct_node.html" title="An element of the Huffman Tree weight is the number of occurencies in the file of the byte represente...">Node</a> is not a "leaf")  <a href="struct_node.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a6827dd16daa3ce1334caa30e60a2e554"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="struct_node.html">Node</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="decoder_8c.html#a6827dd16daa3ce1334caa30e60a2e554">Create_Node</a> (unsigned char byte, int weight, struct <a class="el" href="struct_node.html">Node</a> *left, struct <a class="el" href="struct_node.html">Node</a> *right)</td></tr>
+<tr class="memdesc:a6827dd16daa3ce1334caa30e60a2e554"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a struct <a class="el" href="struct_node.html" title="An element of the Huffman Tree weight is the number of occurencies in the file of the byte represente...">Node</a> from all its parameters.  <br /></td></tr>
 <tr class="separator:a6827dd16daa3ce1334caa30e60a2e554"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac4752224592b7638524e36424c021a27"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="decoder_8c.html#ac4752224592b7638524e36424c021a27">Insertion_Sort</a> (struct <a class="el" href="struct_node.html">Node</a> *Node_List, int n)</td></tr>
+<tr class="memdesc:ac4752224592b7638524e36424c021a27"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sorts the Node_List by ascending order of frequencies, knowing that the list is already sorted, except for the last element.  <br /></td></tr>
 <tr class="separator:ac4752224592b7638524e36424c021a27"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9604ea70e4a68d1b83a9b470a5fe855c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="decoder_8c.html#a9604ea70e4a68d1b83a9b470a5fe855c">Visit_Tree_To_Get_Encoding</a> (struct <a class="el" href="struct_node.html">Node</a> Node_to_visit, unsigned short conversion_array[256][2], unsigned short current_bin_code, unsigned char n_bits_curr_bit_code, int bit_to_add)</td></tr>
-<tr class="separator:a9604ea70e4a68d1b83a9b470a5fe855c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac02ae24203f5de237aaa7b1661129cb5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="decoder_8c.html#ac02ae24203f5de237aaa7b1661129cb5">Create_Huffman_Tree</a> (int n_diff_bytes, struct <a class="el" href="struct_node.html">Node</a> *Node_list, struct <a class="el" href="struct_node.html">Node</a> *memory_nodes)</td></tr>
+<tr class="memdesc:ac02ae24203f5de237aaa7b1661129cb5"><td class="mdescLeft">&#160;</td><td class="mdescRight">From the sorted list of Nodes, create the Huffman Tree, according to the Huffman Coding Algorithm.  <br /></td></tr>
+<tr class="separator:ac02ae24203f5de237aaa7b1661129cb5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa3047f42f41db5c228975219ede39276"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="decoder_8c.html#aa3047f42f41db5c228975219ede39276">Read_Size</a> (FILE *encoded_file)</td></tr>
+<tr class="memdesc:aa3047f42f41db5c228975219ede39276"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read the size of the encoded file.  <br /></td></tr>
+<tr class="separator:aa3047f42f41db5c228975219ede39276"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7fbd0efe8269bebd8ca1d7bc3f5f7672"><td class="memItemLeft" align="right" valign="top">unsigned char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="decoder_8c.html#a7fbd0efe8269bebd8ca1d7bc3f5f7672">Read_Padding_Zeroes</a> (FILE *encoded_file)</td></tr>
+<tr class="memdesc:a7fbd0efe8269bebd8ca1d7bc3f5f7672"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read the number of padding zeroes added by the encoder to the penultimate byte For more details about padding zeroes, see <a class="el" href="encoder_8c.html" title="The file encoder that uses the Huffman Coding Algorithm.">encoder.c</a>.  <br /></td></tr>
+<tr class="separator:a7fbd0efe8269bebd8ca1d7bc3f5f7672"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6179ffb8c2995ab2d286fa0012b6d6ba"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="decoder_8c.html#a6179ffb8c2995ab2d286fa0012b6d6ba">Decode_Encoded_File</a> (int size_of_file, int file_type, unsigned char padding_zeroes, unsigned char *bytes, struct <a class="el" href="struct_node.html">Node</a> *Node_list)</td></tr>
+<tr class="memdesc:a6179ffb8c2995ab2d286fa0012b6d6ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">From the Huffman Tree that we've rebuilt and all the bytes of the encoded file, decode it by going through the Tree.  <br /></td></tr>
+<tr class="separator:a6179ffb8c2995ab2d286fa0012b6d6ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a720e5308189304df7b08d0bd997a05f2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="decoder_8c.html#a720e5308189304df7b08d0bd997a05f2">Read_Encoded_Bytes</a> (FILE *encoded_file, int size_of_file, unsigned char *bytes)</td></tr>
+<tr class="memdesc:a720e5308189304df7b08d0bd997a05f2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read and store the bytes of the encoded file.  <br /></td></tr>
+<tr class="separator:a720e5308189304df7b08d0bd997a05f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae66f6b31b5ad750f1fe042a706a4e3d4"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="decoder_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4">main</a> ()</td></tr>
+<tr class="memdesc:ae66f6b31b5ad750f1fe042a706a4e3d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read the conversion file to rebuild the Huffman Tree, read the encoded file and decoded it thanks to the Huffman Tree, and then writes the decoded file into a new file <br  />
+  <br /></td></tr>
 <tr class="separator:ae66f6b31b5ad750f1fe042a706a4e3d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>The file decoder that uses the Huffman Coding Algorithm. </p>
+<dl class="section author"><dt>Author</dt><dd>Lucas SCHUMMER </dd></dl>
+<dl class="section version"><dt>Version</dt><dd>1.0 </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>28/05/2023</dd></dl>
+<dl class="section copyright"><dt>Copyright</dt><dd>Copyright (c) 2023 </dd></dl>
+</div><h2 class="groupheader">Function Documentation</h2>
+<a id="ac02ae24203f5de237aaa7b1661129cb5" name="ac02ae24203f5de237aaa7b1661129cb5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac02ae24203f5de237aaa7b1661129cb5">&#9670;&#160;</a></span>Create_Huffman_Tree()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Create_Huffman_Tree </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>n_diff_bytes</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">struct <a class="el" href="struct_node.html">Node</a> *&#160;</td>
+          <td class="paramname"><em>Node_list</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">struct <a class="el" href="struct_node.html">Node</a> *&#160;</td>
+          <td class="paramname"><em>memory_nodes</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>From the sorted list of Nodes, create the Huffman Tree, according to the Huffman Coding Algorithm. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">n_diff_bytes</td><td>The number of different bytes (the length of the diff_bytes array) </td></tr>
+    <tr><td class="paramname">Node_list</td><td>The array of struct Nodes, sorted by frequencies </td></tr>
+    <tr><td class="paramname">memory_nodes</td><td>An array of struct Nodes, used to store the Nodes we remove from the Nodes_List (according to the Huffman Coding Algorithm) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="a6827dd16daa3ce1334caa30e60a2e554" name="a6827dd16daa3ce1334caa30e60a2e554"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a6827dd16daa3ce1334caa30e60a2e554">&#9670;&#160;</a></span>Create_Node()</h2>
 
@@ -137,7 +206,75 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="decoder_8c_source.html#l00014">14</a> of file <a class="el" href="decoder_8c_source.html">decoder.c</a>.</p>
+<p>Creates a struct <a class="el" href="struct_node.html" title="An element of the Huffman Tree weight is the number of occurencies in the file of the byte represente...">Node</a> from all its parameters. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">byte</td><td>The byte represented by the <a class="el" href="struct_node.html" title="An element of the Huffman Tree weight is the number of occurencies in the file of the byte represente...">Node</a> (only if it's a "leaf" of the tree, otherwise 0 (we will never use it in this case anyway)) </td></tr>
+    <tr><td class="paramname">weight</td><td>If the <a class="el" href="struct_node.html" title="An element of the Huffman Tree weight is the number of occurencies in the file of the byte represente...">Node</a> is a leaf, the weight is the number of occurencies in the file of the byte represented by the byte. Otherwise, it is the sum of the weights of the Nodes under it. </td></tr>
+    <tr><td class="paramname">left</td><td>Points to another <a class="el" href="struct_node.html" title="An element of the Huffman Tree weight is the number of occurencies in the file of the byte represente...">Node</a>, which is lower in the tree. (NULL if the <a class="el" href="struct_node.html" title="An element of the Huffman Tree weight is the number of occurencies in the file of the byte represente...">Node</a> is a "leaf") </td></tr>
+    <tr><td class="paramname">right</td><td>Points to another <a class="el" href="struct_node.html" title="An element of the Huffman Tree weight is the number of occurencies in the file of the byte represente...">Node</a>, which is lower in the tree. (NULL if the <a class="el" href="struct_node.html" title="An element of the Huffman Tree weight is the number of occurencies in the file of the byte represente...">Node</a> is a "leaf")</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The struct <a class="el" href="struct_node.html" title="An element of the Huffman Tree weight is the number of occurencies in the file of the byte represente...">Node</a> created </dd></dl>
+
+</div>
+</div>
+<a id="a6179ffb8c2995ab2d286fa0012b6d6ba" name="a6179ffb8c2995ab2d286fa0012b6d6ba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6179ffb8c2995ab2d286fa0012b6d6ba">&#9670;&#160;</a></span>Decode_Encoded_File()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Decode_Encoded_File </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>size_of_file</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>file_type</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned char&#160;</td>
+          <td class="paramname"><em>padding_zeroes</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned char *&#160;</td>
+          <td class="paramname"><em>bytes</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">struct <a class="el" href="struct_node.html">Node</a> *&#160;</td>
+          <td class="paramname"><em>Node_list</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>From the Huffman Tree that we've rebuilt and all the bytes of the encoded file, decode it by going through the Tree. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">size_of_file</td><td>The size (in bytes) of the encoded file </td></tr>
+    <tr><td class="paramname">file_type</td><td>A character giving the format of the file, so that we can open the decoding file in the right format For more details, see <a class="el" href="encoder_8c.html" title="The file encoder that uses the Huffman Coding Algorithm.">encoder.c</a> </td></tr>
+    <tr><td class="paramname">padding_zeroes</td><td>The number of padding zeroes in the penultimate byte </td></tr>
+    <tr><td class="paramname">bytes</td><td>The bytes of the compressed file </td></tr>
+    <tr><td class="paramname">Node_list</td><td>The list of Nodes, containing only one last element at this point, which is the head of the tree </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -167,7 +304,14 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="decoder_8c_source.html#l00023">23</a> of file <a class="el" href="decoder_8c_source.html">decoder.c</a>.</p>
+<p>Sorts the Node_List by ascending order of frequencies, knowing that the list is already sorted, except for the last element. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">Node_List</td><td>Array of struct Nodes, that we want to sort by frequencies </td></tr>
+    <tr><td class="paramname">n</td><td>The length of the array Nodes_List </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -186,45 +330,35 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="decoder_8c_source.html#l00073">73</a> of file <a class="el" href="decoder_8c_source.html">decoder.c</a>.</p>
+<p>Read the conversion file to rebuild the Huffman Tree, read the encoded file and decoded it thanks to the Huffman Tree, and then writes the decoded file into a new file <br  />
+ </p>
+<dl class="section return"><dt>Returns</dt><dd>0 if there were no erros in the process </dd></dl>
 
 </div>
 </div>
-<a id="a9604ea70e4a68d1b83a9b470a5fe855c" name="a9604ea70e4a68d1b83a9b470a5fe855c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9604ea70e4a68d1b83a9b470a5fe855c">&#9670;&#160;</a></span>Visit_Tree_To_Get_Encoding()</h2>
+<a id="a720e5308189304df7b08d0bd997a05f2" name="a720e5308189304df7b08d0bd997a05f2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a720e5308189304df7b08d0bd997a05f2">&#9670;&#160;</a></span>Read_Encoded_Bytes()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void Visit_Tree_To_Get_Encoding </td>
+          <td class="memname">void Read_Encoded_Bytes </td>
           <td>(</td>
-          <td class="paramtype">struct <a class="el" href="struct_node.html">Node</a>&#160;</td>
-          <td class="paramname"><em>Node_to_visit</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">unsigned short&#160;</td>
-          <td class="paramname"><em>conversion_array</em>[256][2], </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">unsigned short&#160;</td>
-          <td class="paramname"><em>current_bin_code</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">unsigned char&#160;</td>
-          <td class="paramname"><em>n_bits_curr_bit_code</em>, </td>
+          <td class="paramtype">FILE *&#160;</td>
+          <td class="paramname"><em>encoded_file</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>bit_to_add</em>&#160;</td>
+          <td class="paramname"><em>size_of_file</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned char *&#160;</td>
+          <td class="paramname"><em>bytes</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -234,7 +368,69 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="decoder_8c_source.html#l00039">39</a> of file <a class="el" href="decoder_8c_source.html">decoder.c</a>.</p>
+<p>Read and store the bytes of the encoded file. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">encoded_file</td><td>The encoded file, opened in binary read mode </td></tr>
+    <tr><td class="paramname">size_of_file</td><td>The size of the encoded file (in bytes) </td></tr>
+    <tr><td class="paramname">bytes</td><td>The array of bytes where we store the bytes of the file that we read </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a7fbd0efe8269bebd8ca1d7bc3f5f7672" name="a7fbd0efe8269bebd8ca1d7bc3f5f7672"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7fbd0efe8269bebd8ca1d7bc3f5f7672">&#9670;&#160;</a></span>Read_Padding_Zeroes()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned char Read_Padding_Zeroes </td>
+          <td>(</td>
+          <td class="paramtype">FILE *&#160;</td>
+          <td class="paramname"><em>encoded_file</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Read the number of padding zeroes added by the encoder to the penultimate byte For more details about padding zeroes, see <a class="el" href="encoder_8c.html" title="The file encoder that uses the Huffman Coding Algorithm.">encoder.c</a>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">encoded_file</td><td>The encoded binary file, opened in read mode </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The number of padding zeroes (between 0 and 7) added to the penultimate byte </dd></dl>
+
+</div>
+</div>
+<a id="aa3047f42f41db5c228975219ede39276" name="aa3047f42f41db5c228975219ede39276"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa3047f42f41db5c228975219ede39276">&#9670;&#160;</a></span>Read_Size()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Read_Size </td>
+          <td>(</td>
+          <td class="paramtype">FILE *&#160;</td>
+          <td class="paramname"><em>encoded_file</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Read the size of the encoded file. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">encoded_file</td><td>The encoded binary file, already opened in read mode</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The size of the file (in bytes) </dd></dl>
 
 </div>
 </div>
