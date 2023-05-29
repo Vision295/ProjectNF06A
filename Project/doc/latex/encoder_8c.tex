@@ -1,0 +1,64 @@
+\doxysection{C\+:/\+Users/theop/\+Documents/\+\_\+\+Perso/\+\_\+\+UTT/\+NF06\+A/\+Project\+NF06\+A/\+Project/encoder.c File Reference}
+\hypertarget{encoder_8c}{}\label{encoder_8c}\index{C:/Users/theop/Documents/\_Perso/\_UTT/NF06A/ProjectNF06A/Project/encoder.c@{C:/Users/theop/Documents/\_Perso/\_UTT/NF06A/ProjectNF06A/Project/encoder.c}}
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$math.\+h$>$}\newline
+\doxysubsubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_node}{Node}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_node}{Node}} \mbox{\hyperlink{encoder_8c_a6827dd16daa3ce1334caa30e60a2e554}{Create\+\_\+\+Node}} (unsigned char byte, int weight, struct \mbox{\hyperlink{struct_node}{Node}} \texorpdfstring{$\ast$}{*}left, struct \mbox{\hyperlink{struct_node}{Node}} \texorpdfstring{$\ast$}{*}right)
+\item 
+void \mbox{\hyperlink{encoder_8c_ac4752224592b7638524e36424c021a27}{Insertion\+\_\+\+Sort}} (struct \mbox{\hyperlink{struct_node}{Node}} \texorpdfstring{$\ast$}{*}Node\+\_\+\+List, int n)
+\item 
+void \mbox{\hyperlink{encoder_8c_a9604ea70e4a68d1b83a9b470a5fe855c}{Visit\+\_\+\+Tree\+\_\+\+To\+\_\+\+Get\+\_\+\+Encoding}} (struct \mbox{\hyperlink{struct_node}{Node}} Node\+\_\+to\+\_\+visit, unsigned short conversion\+\_\+array\mbox{[}256\mbox{]}\mbox{[}2\mbox{]}, unsigned short current\+\_\+bin\+\_\+code, unsigned char n\+\_\+bits\+\_\+curr\+\_\+bit\+\_\+code, int bit\+\_\+to\+\_\+add)
+\item 
+int \mbox{\hyperlink{encoder_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{encoder_8c_a6827dd16daa3ce1334caa30e60a2e554}\label{encoder_8c_a6827dd16daa3ce1334caa30e60a2e554} 
+\index{encoder.c@{encoder.c}!Create\_Node@{Create\_Node}}
+\index{Create\_Node@{Create\_Node}!encoder.c@{encoder.c}}
+\doxysubsubsection{\texorpdfstring{Create\_Node()}{Create\_Node()}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{struct_node}{Node}} Create\+\_\+\+Node (\begin{DoxyParamCaption}\item[{unsigned char}]{byte,  }\item[{int}]{weight,  }\item[{struct \mbox{\hyperlink{struct_node}{Node}} \texorpdfstring{$\ast$}{*}}]{left,  }\item[{struct \mbox{\hyperlink{struct_node}{Node}} \texorpdfstring{$\ast$}{*}}]{right }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{encoder_8c_source_l00012}{12}} of file \mbox{\hyperlink{encoder_8c_source}{encoder.\+c}}.
+
+\Hypertarget{encoder_8c_ac4752224592b7638524e36424c021a27}\label{encoder_8c_ac4752224592b7638524e36424c021a27} 
+\index{encoder.c@{encoder.c}!Insertion\_Sort@{Insertion\_Sort}}
+\index{Insertion\_Sort@{Insertion\_Sort}!encoder.c@{encoder.c}}
+\doxysubsubsection{\texorpdfstring{Insertion\_Sort()}{Insertion\_Sort()}}
+{\footnotesize\ttfamily void Insertion\+\_\+\+Sort (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{struct_node}{Node}} \texorpdfstring{$\ast$}{*}}]{Node\+\_\+\+List,  }\item[{int}]{n }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{encoder_8c_source_l00021}{21}} of file \mbox{\hyperlink{encoder_8c_source}{encoder.\+c}}.
+
+\Hypertarget{encoder_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}\label{encoder_8c_ae66f6b31b5ad750f1fe042a706a4e3d4} 
+\index{encoder.c@{encoder.c}!main@{main}}
+\index{main@{main}!encoder.c@{encoder.c}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{encoder_8c_source_l00067}{67}} of file \mbox{\hyperlink{encoder_8c_source}{encoder.\+c}}.
+
+\Hypertarget{encoder_8c_a9604ea70e4a68d1b83a9b470a5fe855c}\label{encoder_8c_a9604ea70e4a68d1b83a9b470a5fe855c} 
+\index{encoder.c@{encoder.c}!Visit\_Tree\_To\_Get\_Encoding@{Visit\_Tree\_To\_Get\_Encoding}}
+\index{Visit\_Tree\_To\_Get\_Encoding@{Visit\_Tree\_To\_Get\_Encoding}!encoder.c@{encoder.c}}
+\doxysubsubsection{\texorpdfstring{Visit\_Tree\_To\_Get\_Encoding()}{Visit\_Tree\_To\_Get\_Encoding()}}
+{\footnotesize\ttfamily void Visit\+\_\+\+Tree\+\_\+\+To\+\_\+\+Get\+\_\+\+Encoding (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{struct_node}{Node}}}]{Node\+\_\+to\+\_\+visit,  }\item[{unsigned short}]{conversion\+\_\+array\mbox{[}256\mbox{]}\mbox{[}2\mbox{]},  }\item[{unsigned short}]{current\+\_\+bin\+\_\+code,  }\item[{unsigned char}]{n\+\_\+bits\+\_\+curr\+\_\+bit\+\_\+code,  }\item[{int}]{bit\+\_\+to\+\_\+add }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{encoder_8c_source_l00037}{37}} of file \mbox{\hyperlink{encoder_8c_source}{encoder.\+c}}.
+

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['features_0',['features',['../namespacefeatures.html',1,'']]]
+  ['image_5fmanager_0',['image_manager',['../namespaceimage__manager.html',1,'']]]
 ];

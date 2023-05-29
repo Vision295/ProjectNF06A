@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['doxygen_20example_20project_0',['Doxygen Example Project',['../index.html',1,'']]]
+  ['photostudio_20documentation_0',['Photostudio Documentation',['../index.html',1,'']]]
 ];

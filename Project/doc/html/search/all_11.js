@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['vertical_5fscrollbar_0',['vertical_scrollBar',['../namespacetest_tkinter.html#a65f03547d64851746e5e153d67f4d67c',1,'testTkinter']]],
-  ['visit_5ftree_5fto_5fget_5fencoding_1',['Visit_Tree_To_Get_Encoding',['../main_8c.html#ab5c55b97855655830b1b61dda60334c0',1,'main.c']]]
+  ['visit_5ftree_5fto_5fget_5fencoding_0',['Visit_Tree_To_Get_Encoding',['../decoder_8c.html#a9604ea70e4a68d1b83a9b470a5fe855c',1,'Visit_Tree_To_Get_Encoding(struct Node Node_to_visit, unsigned short conversion_array[256][2], unsigned short current_bin_code, unsigned char n_bits_curr_bit_code, int bit_to_add):&#160;decoder.c'],['../encoder_8c.html#a9604ea70e4a68d1b83a9b470a5fe855c',1,'Visit_Tree_To_Get_Encoding(struct Node Node_to_visit, unsigned short conversion_array[256][2], unsigned short current_bin_code, unsigned char n_bits_curr_bit_code, int bit_to_add):&#160;encoder.c']]]
 ];

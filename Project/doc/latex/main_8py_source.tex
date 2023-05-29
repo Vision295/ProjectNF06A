@@ -1,80 +1,12 @@
 \doxysection{C\+:/\+Users/theop/\+Documents/\+\_\+\+Perso/\+\_\+\+UTT/\+NF06\+A/\+Project\+NF06\+A/\+Project/main.py}
 \hypertarget{main_8py_source}{}\label{main_8py_source}
 \begin{DoxyCode}{0}
-\DoxyCodeLine{\Hypertarget{main_8py_source_l00001}00001\ \textcolor{keyword}{from}\ explorer\ \textcolor{keyword}{import}\ Explorer}
-\DoxyCodeLine{\Hypertarget{main_8py_source_l00002}00002\ \textcolor{comment}{\#!/usr/bin/env\ python3}}
-\DoxyCodeLine{\Hypertarget{main_8py_source_l00003}00003\ \textcolor{stringliteral}{"{}"{}"{}!\ @brief\ Example\ Python\ program\ with\ Doxygen\ style\ comments."{}"{}"{}}}
-\DoxyCodeLine{\Hypertarget{main_8py_source_l00004}00004\ }
-\DoxyCodeLine{\Hypertarget{main_8py_source_l00005}00005\ }
-\DoxyCodeLine{\Hypertarget{main_8py_source_l00006}00006\ }
-\DoxyCodeLine{\Hypertarget{main_8py_source_l00017}00017\ }
-\DoxyCodeLine{\Hypertarget{main_8py_source_l00018}00018\ }
-\DoxyCodeLine{\Hypertarget{main_8py_source_l00019}00019\ }
-\DoxyCodeLine{\Hypertarget{main_8py_source_l00044}00044\ }
-\DoxyCodeLine{\Hypertarget{main_8py_source_l00045}00045\ }
-\DoxyCodeLine{\Hypertarget{main_8py_source_l00046}00046\ \textcolor{comment}{\#\ Imports}}
-\DoxyCodeLine{\Hypertarget{main_8py_source_l00047}00047\ \textcolor{keyword}{from}\ time\ \textcolor{keyword}{import}\ sleep}
-\DoxyCodeLine{\Hypertarget{main_8py_source_l00048}00048\ }
-\DoxyCodeLine{\Hypertarget{main_8py_source_l00049}00049\ }
-\DoxyCodeLine{\Hypertarget{main_8py_source_l00050}00050\ \textcolor{comment}{\#\ Global\ Constants}}
-\DoxyCodeLine{\Hypertarget{main_8py_source_l00051}00051\ }
-\DoxyCodeLine{\Hypertarget{main_8py_source_l00052}00052\ DEBUG\ =\ 1}
-\DoxyCodeLine{\Hypertarget{main_8py_source_l00053}00053\ }
-\DoxyCodeLine{\Hypertarget{main_8py_source_l00054}00054\ MIN\_BASE\ =\ 1}
-\DoxyCodeLine{\Hypertarget{main_8py_source_l00055}00055\ }
-\DoxyCodeLine{\Hypertarget{main_8py_source_l00056}00056\ MAX\_BASE\ =\ 10}
-\DoxyCodeLine{\Hypertarget{main_8py_source_l00057}00057\ }
-\DoxyCodeLine{\Hypertarget{main_8py_source_l00058}00058\ MIN\_MAPPED\ =\ 0}
-\DoxyCodeLine{\Hypertarget{main_8py_source_l00059}00059\ }
-\DoxyCodeLine{\Hypertarget{main_8py_source_l00060}00060\ MAX\_MAPPED\ =\ 255}
-\DoxyCodeLine{\Hypertarget{main_8py_source_l00061}00061\ }
-\DoxyCodeLine{\Hypertarget{main_8py_source_l00062}00062\ }
-\DoxyCodeLine{\Hypertarget{main_8py_source_l00063}00063\ \textcolor{comment}{\#\ Functions}}
-\DoxyCodeLine{\Hypertarget{main_8py_source_l00064}00064\ \textcolor{keyword}{def\ }init():}
-\DoxyCodeLine{\Hypertarget{main_8py_source_l00065}00065\ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}!\ Initializes\ the\ program."{}"{}"{}}}
-\DoxyCodeLine{\Hypertarget{main_8py_source_l00066}00066\ }
-\DoxyCodeLine{\Hypertarget{main_8py_source_l00067}00067\ \ \ \ \ \textcolor{keywordflow}{if}\ DEBUG:}
-\DoxyCodeLine{\Hypertarget{main_8py_source_l00068}00068\ \ \ \ \ \ \ \ \ print(\textcolor{stringliteral}{"{}Initializing\ program."{}})}
-\DoxyCodeLine{\Hypertarget{main_8py_source_l00069}00069\ }
-\DoxyCodeLine{\Hypertarget{main_8py_source_l00070}00070\ }
-\DoxyCodeLine{\Hypertarget{main_8py_source_l00071}00071\ \textcolor{keyword}{def\ }map\_range(number,\ in\_min,\ in\_max,\ out\_min,\ out\_max):}
-\DoxyCodeLine{\Hypertarget{main_8py_source_l00072}00072\ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}!\ Maps\ a\ number\ from\ one\ range\ to\ another.}}
-\DoxyCodeLine{\Hypertarget{main_8py_source_l00073}00073\ \textcolor{stringliteral}{}}
-\DoxyCodeLine{\Hypertarget{main_8py_source_l00074}00074\ \textcolor{stringliteral}{\ \ \ \ }\textcolor{preprocessor}{@param}\ number\ \ \ The\ input\ number\ to\ map.}
-\DoxyCodeLine{\Hypertarget{main_8py_source_l00075}00075\ \ \ \ \ \textcolor{preprocessor}{@param}\ in\_min\ \ \ The\ minimum\ value\ of\ an\ input\ number.}
-\DoxyCodeLine{\Hypertarget{main_8py_source_l00076}00076\ \ \ \ \ \textcolor{preprocessor}{@param}\ in\_max\ \ \ The\ maximum\ value\ of\ an\ input\ number.}
-\DoxyCodeLine{\Hypertarget{main_8py_source_l00077}00077\ \ \ \ \ \textcolor{preprocessor}{@param}\ out\_min\ \ The\ minimum\ value\ of\ an\ output\ number.}
-\DoxyCodeLine{\Hypertarget{main_8py_source_l00078}00078\ \ \ \ \ \textcolor{preprocessor}{@param}\ out\_max\ \ The\ maximum\ value\ of\ an\ output\ number.}
-\DoxyCodeLine{\Hypertarget{main_8py_source_l00079}00079\ }
-\DoxyCodeLine{\Hypertarget{main_8py_source_l00080}00080\ \ \ \ \ \textcolor{preprocessor}{@return}\ \ The\ mapped\ number.}
-\DoxyCodeLine{\Hypertarget{main_8py_source_l00081}00081\ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}}}
-\DoxyCodeLine{\Hypertarget{main_8py_source_l00082}00082\ \textcolor{stringliteral}{}}
-\DoxyCodeLine{\Hypertarget{main_8py_source_l00083}00083\ \textcolor{stringliteral}{\ \ \ \ mapped\ =\ (number\ -\/\ in\_min)\ *\ (out\_max\ -\/\ out\_min)\ /\ (in\_max\ -\/\ in\_min)\ +\ out\_min}}
-\DoxyCodeLine{\Hypertarget{main_8py_source_l00084}00084\ \textcolor{stringliteral}{\ \ \ \ }\textcolor{keywordflow}{if}\ out\_min\ <=\ out\_max:}
-\DoxyCodeLine{\Hypertarget{main_8py_source_l00085}00085\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ max(min(mapped,\ out\_max),\ out\_min)}
-\DoxyCodeLine{\Hypertarget{main_8py_source_l00086}00086\ \ \ \ \ \textcolor{keywordflow}{return}\ min(max(mapped,\ out\_max),\ out\_min)}
-\DoxyCodeLine{\Hypertarget{main_8py_source_l00087}00087\ }
-\DoxyCodeLine{\Hypertarget{main_8py_source_l00088}00088\ }
-\DoxyCodeLine{\Hypertarget{main_8py_source_l00089}00089\ \textcolor{keyword}{def\ }\mbox{\hyperlink{namespacemain}{main}}():}
-\DoxyCodeLine{\Hypertarget{main_8py_source_l00090}00090\ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}!\ Main\ program\ entry."{}"{}"{}}}
-\DoxyCodeLine{\Hypertarget{main_8py_source_l00091}00091\ }
-\DoxyCodeLine{\Hypertarget{main_8py_source_l00092}00092\ \ \ \ \ init()\ \ \textcolor{comment}{\#\ program\ initialization}}
-\DoxyCodeLine{\Hypertarget{main_8py_source_l00093}00093\ }
-\DoxyCodeLine{\Hypertarget{main_8py_source_l00094}00094\ \ \ \ \ \textcolor{comment}{\#\ Map\ numbers}}
-\DoxyCodeLine{\Hypertarget{main_8py_source_l00095}00095\ \ \ \ \ \textcolor{keywordflow}{for}\ i\ \textcolor{keywordflow}{in}\ range(MIN\_BASE,\ MAX\_BASE\ +\ 1):}
-\DoxyCodeLine{\Hypertarget{main_8py_source_l00096}00096\ \ \ \ \ \ \ \ \ print(}
-\DoxyCodeLine{\Hypertarget{main_8py_source_l00097}00097\ \ \ \ \ \ \ \ \ \ \ \ \ f\textcolor{stringliteral}{"{}Base:\ \{i:2d\},\ Mapped:\ "{}}}
-\DoxyCodeLine{\Hypertarget{main_8py_source_l00098}00098\ \ \ \ \ \ \ \ \ \ \ \ \ f\textcolor{stringliteral}{"{}\{map\_range(i,\ MIN\_BASE,\ MAX\_BASE,\ MIN\_MAPPED,\ MAX\_MAPPED):5.1f\}"{}}}
-\DoxyCodeLine{\Hypertarget{main_8py_source_l00099}00099\ \ \ \ \ \ \ \ \ )}
-\DoxyCodeLine{\Hypertarget{main_8py_source_l00100}00100\ \ \ \ \ \ \ \ \ sleep(0.25)\ \ \textcolor{comment}{\#\ wait\ 250\ milliseconds}}
-\DoxyCodeLine{\Hypertarget{main_8py_source_l00101}00101\ }
-\DoxyCodeLine{\Hypertarget{main_8py_source_l00102}00102\ }
-\DoxyCodeLine{\Hypertarget{main_8py_source_l00103}00103\ }
-\DoxyCodeLine{\Hypertarget{main_8py_source_l00104}00104\ \textcolor{keywordflow}{if}\ \_\_name\_\_\ ==\ \textcolor{stringliteral}{"{}\_\_main\_\_"{}}:}
-\DoxyCodeLine{\Hypertarget{main_8py_source_l00105}00105\ \ \ \ \ \mbox{\hyperlink{namespacemain}{main}}()}
-\DoxyCodeLine{\Hypertarget{main_8py_source_l00106}00106\ }
-\DoxyCodeLine{\Hypertarget{main_8py_source_l00107}00107\ }
-\DoxyCodeLine{\Hypertarget{main_8py_source_l00108}00108\ mainScreen\ =\ Explorer()}
-\DoxyCodeLine{\Hypertarget{main_8py_source_l00109}00109\ mainScreen.mainloop()}
+\DoxyCodeLine{\Hypertarget{main_8py_source_l00001}\mbox{\hyperlink{namespacemain}{00001}}\ \textcolor{stringliteral}{"{}"{}"{}!\ @brief\ Example\ Python\ program\ with\ Doxygen\ style\ comments."{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{main_8py_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{main_8py_source_l00003}00003\ }
+\DoxyCodeLine{\Hypertarget{main_8py_source_l00026}00026\ \textcolor{keyword}{from}\ explorer\ \textcolor{keyword}{import}\ Explorer}
+\DoxyCodeLine{\Hypertarget{main_8py_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{main_8py_source_l00028}00028\ mainScreen\ =\ \mbox{\hyperlink{classexplorer_1_1_explorer}{Explorer}}()}
+\DoxyCodeLine{\Hypertarget{main_8py_source_l00029}00029\ mainScreen.mainloop()}
 
 \end{DoxyCode}

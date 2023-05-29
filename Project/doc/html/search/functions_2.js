@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['empty_5ffolder_5fframe_0',['empty_folder_frame',['../classexplorer_1_1_explorer.html#ad3d0ea4af92dcc5dde7b967ea2bed3b3',1,'explorer::Explorer']]]
+  ['back_0',['back',['../classexplorer_1_1_explorer.html#a251b595725b5e9eedcad664ac967aa7b',1,'explorer::Explorer']]]
 ];
