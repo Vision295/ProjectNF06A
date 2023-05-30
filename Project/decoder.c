@@ -11,6 +11,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 
 /**
@@ -26,6 +27,7 @@ struct Node{
     struct Node *left;
 };
 
+
 /**
  * @brief           Creates a struct Node from all its parameters
  * 
@@ -38,13 +40,27 @@ struct Node{
  * @return          The struct Node created
  */
 struct Node Create_Node (unsigned char byte, int weight, struct Node* left, struct Node* right) {
+    
     struct Node node;
     node.weight = weight;
     node.byte = byte;
     node.right = right;
     node.left = left;
     return node;
+
 }
+
+
+char* Read_Encoded_File_Name() {
+
+    FILE* filename_file = fopen("../compressed/compressed.txt", "r");
+    char* filename;
+    fscanf(filename_file, "%s", filename);
+    fclose(filename_file);
+    return filename;
+
+}
+
 
 /**
  * @brief               Sorts the Node_List by ascending order of frequencies, knowing that the list is already sorted, except for the last element
@@ -70,6 +86,7 @@ void Insertion_Sort(struct Node* Node_List, int n) {
     Node_List[index_to_insert] = Node_Memory;
 
 }
+
 
 /**
  * @brief               From the sorted list of Nodes, create the Huffman Tree, according to the Huffman Coding Algorithm
@@ -119,7 +136,9 @@ void Create_Huffman_Tree(int n_diff_bytes, struct Node* Node_list, struct Node* 
         Insertion_Sort(Node_list, n_diff_bytes);
 
     }
+
 }
+
 
 /**
  * @brief               Read the size of the encoded file 
@@ -138,6 +157,7 @@ int Read_Size(FILE* encoded_file) {
     return size_of_file;
 
 }
+
 
 /**
  * @brief                   Read the number of padding zeroes added by the encoder to the penultimate byte
@@ -159,35 +179,23 @@ unsigned char Read_Padding_Zeroes(FILE* encoded_file) {
     return padding_zeroes;
 }
 
+
 /**
  * @brief                   From the Huffman Tree that we've rebuilt and all the bytes of the encoded file, decode it by going through the Tree
  * 
  * @param size_of_file      The size (in bytes) of the encoded file
- * @param file_type         A character giving the format of the file, so that we can open the decoding file in the right format
- *                          For more details, see encoder.c
  * @param padding_zeroes    The number of padding zeroes in the penultimate byte
  * @param bytes             The bytes of the compressed file
  * @param Node_list         The list of Nodes, containing only one last element at this point, which is the head of the tree
  */
-void Decode_Encoded_File(int size_of_file, int file_type, unsigned char padding_zeroes, unsigned char* bytes, struct Node* Node_list) {
+void Decode_Encoded_File(int size_of_file, unsigned char padding_zeroes, unsigned char* bytes, struct Node* Node_list) {
     
-    //Open the decoding file in the right format (the same one as the original file)
-    FILE* decoded_file;
-    if (file_type == 49) {
-        decoded_file = fopen("decoded.png", "wb");
-    }else if (file_type == 50) {
-        decoded_file = fopen("decoded.jpg", "wb");
-    } else if (file_type == 51) {
-        decoded_file = fopen("decoded.bmp", "wb");
-    } else if (file_type == 52) {
-        decoded_file = fopen("decoded.arw", "wb");
-    } else if (file_type == 53) {
-        decoded_file = fopen("decoded.gif", "wb");
-    } else if (file_type == 54) {
-        decoded_file = fopen("decoded.tif", "wb");
-    }else {
-        decoded_file = fopen("decoded.bin", "wb");
-    }
+    //Read the name of the file that is currently encoded and open it in writing mode
+    char* filename = Read_Encoded_File_Name();
+    char path[] = "../compressed/";
+    strcat(path, filename);
+    FILE* decoded_file = fopen(path, "wb");
+    if (decoded_file == NULL) printf("Failed to load file");
 
 
     //Index through the array bytes
@@ -236,7 +244,9 @@ void Decode_Encoded_File(int size_of_file, int file_type, unsigned char padding_
     }
 
     fclose(decoded_file);
+
 }
+
 
 /**
  * @brief               Read and store the bytes of the encoded file
@@ -246,8 +256,11 @@ void Decode_Encoded_File(int size_of_file, int file_type, unsigned char padding_
  * @param bytes         The array of bytes where we store the bytes of the file that we read
  */
 void Read_Encoded_Bytes(FILE* encoded_file, int size_of_file, unsigned char* bytes) {
+
     fread(bytes, sizeof(unsigned char), size_of_file, encoded_file);
+
 }
+
 
 /**
  * @brief   Read the conversion file to rebuild the Huffman Tree, read the encoded file and decoded it thanks to the Huffman Tree, and then
@@ -259,15 +272,13 @@ int main()
 {
 
     //File to read from, so that we can rebuild the Huffman Tree
-    FILE *conversion_file = fopen("conversion.bin", "rb");
+    FILE *conversion_file = fopen("../compressed/conversion.bin", "rb");
 
     //Create the structures to read the file
     int n_diff_bytes;
     unsigned char diff_bytes[256];
-    int file_type;
 
-    //Read the extension of the file and the number of different bytes(to rebuild the tree)
-    file_type = getw(conversion_file);
+    //Read the number of different bytes(to rebuild the tree)
     n_diff_bytes = getw(conversion_file);
     fread(diff_bytes, sizeof(unsigned char), 256, conversion_file);
 
@@ -302,7 +313,7 @@ int main()
 
 
     //Open the encoded file and gather the information necessary to decode it
-    FILE *encoded_file = fopen("encoded.bin", "rb");
+    FILE *encoded_file = fopen("../compressed/encoded.bin", "rb");
     int size_of_file = Read_Size(encoded_file);
     unsigned char padding_zeroes = Read_Padding_Zeroes(encoded_file);
 
@@ -317,7 +328,7 @@ int main()
     Read_Encoded_Bytes(encoded_file, size_of_file, bytes);
 
 
-    Decode_Encoded_File(size_of_file, file_type, padding_zeroes, bytes, Node_list);
+    Decode_Encoded_File(size_of_file, padding_zeroes, bytes, Node_list);
 
 
     fclose(encoded_file);

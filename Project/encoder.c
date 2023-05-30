@@ -13,6 +13,9 @@
 #include <math.h>
 #include <string.h>
 
+#include <limits.h>
+#include <unistd.h>
+
 
 /**
  * @brief   An element of the Huffman Tree
@@ -40,12 +43,29 @@ struct Node{
  * @return          The struct Node created
  */
 struct Node Create_Node (unsigned char byte, int weight, struct Node* left, struct Node* right) {
+    
     struct Node node;
     node.weight = weight;
     node.byte = byte;
     node.right = right;
     node.left = left;
     return node;
+
+}
+
+
+/**
+ * @brief           Write a file that will be read by the decoder. It is a text file containing the name of the encoded file, so that
+ *                  the decoder will be able to open it
+ * 
+ * @param filename  The name of the file (string)
+ */
+void Write_Filename(char* filename) {
+
+    FILE* file = fopen("../compressed/compressed.txt", "wb");
+    fputs(filename, file);
+    fclose(file);
+
 }
 
 
@@ -57,12 +77,15 @@ struct Node Create_Node (unsigned char byte, int weight, struct Node* left, stru
  * @param fp            The file to compress, already open in read(binary) mode
  */
 void Read_Bytes(int size_of_file, unsigned char* bytes, FILE* fp) {
+
     if (bytes == NULL) {
         printf("\n bytes failed to load");
         exit(EXIT_FAILURE);
     }    
     fread(bytes, sizeof(unsigned char), size_of_file, fp);
+
 }
+
 
 /**
  * @brief               From the read bytes of the file to compress, extract all the different bytes present and get the amount of different bytes
@@ -74,6 +97,7 @@ void Read_Bytes(int size_of_file, unsigned char* bytes, FILE* fp) {
  * @return              The amount (integer) of different bytes in the file (from 0 to 256)
  */
 int Get_Diff_Bytes(int size_of_file, unsigned char* bytes, unsigned char* diff_bytes) {
+
     int n_diff_bytes = 0;
     for (int i=0; i<size_of_file; i++) {
 
@@ -92,7 +116,9 @@ int Get_Diff_Bytes(int size_of_file, unsigned char* bytes, unsigned char* diff_b
         }
     }
     return n_diff_bytes;
+
 }
+
 
 /**
  * @brief               From the bytes of the file and the list of different bytes, count the number of occurencies of each byte in the whole file
@@ -107,6 +133,7 @@ int Get_Diff_Bytes(int size_of_file, unsigned char* bytes, unsigned char* diff_b
  *                          
  */
 void Get_Bytes_Frequencies(int size_of_file, int n_diff_bytes, unsigned char* bytes, unsigned char* diff_bytes, int* frequencies) {
+
     //Going through each different byte to calculate how many time we find it in bytes
     for (int i=0; i<n_diff_bytes; i++) {
         frequencies[i] = 0;
@@ -116,7 +143,9 @@ void Get_Bytes_Frequencies(int size_of_file, int n_diff_bytes, unsigned char* by
             }
         }
     }
+
 }
+
 
 /**
  * @brief               A kind of "double" bubble sort : we sort diff_bytes and frequencies by frequencies(ascending order). The arrays stay "symetrical"
@@ -127,6 +156,7 @@ void Get_Bytes_Frequencies(int size_of_file, int n_diff_bytes, unsigned char* by
  * @param frequencies   The number of occurencies of each byte present in the file
  */
 void Bubble_Sort(int n_diff_bytes, unsigned char* diff_bytes, int* frequencies) {
+
     int Modif = 1;
     int i=0;
 
@@ -149,25 +179,26 @@ void Bubble_Sort(int n_diff_bytes, unsigned char* diff_bytes, int* frequencies) 
 
 }
 
+
 /**
  * @brief               Write the file to transfer to the decoder (in addition to the compressed file)
  *                      This file contains the information necessary for the decoder to rebuild the tree
  * 
  * @param n_diff_bytes  The number of different bytes (the length of the diff_bytes array)
- * @param file_type     An char giving the decoder the format of the encoded_file (49 for png, 50 for jpg...) (More details in the main function) 
  * @param diff_bytes    All the different bytes present in the file
  * @param frequencies   The number of occurencies of each byte present in the file
  */
-void Write_Compression_File (int n_diff_bytes, char file_type, unsigned char* diff_bytes, int* frequencies) {
+void Write_Compression_File (int n_diff_bytes, unsigned char* diff_bytes, int* frequencies) {
 
-    FILE *conversion_file = fopen("conversion.bin", "wb");
-    putw(file_type, conversion_file);
+    FILE *conversion_file = fopen("../compressed/conversion.bin", "wb");
     putw(n_diff_bytes, conversion_file);
     fwrite(diff_bytes, sizeof(unsigned char), 256, conversion_file);
     fwrite(frequencies, sizeof(int), n_diff_bytes, conversion_file);
 
     fclose(conversion_file);
+
 }
+
 
 /**
  * @brief               Sorts the Node_List by ascending order of frequencies, knowing that the list is already sorted, except for the last element
@@ -191,7 +222,9 @@ void Insertion_Sort(struct Node* Node_List, int n) {
 
     //Adding the last element at the right index
     Node_List[index_to_insert] = Node_Memory;
+
 }
+
 
 /**
  * @brief               From the sorted list of Nodes, create the Huffman Tree, according to the Huffman Coding Algorithm
@@ -238,7 +271,9 @@ void Create_Huffman_Tree(int n_diff_bytes, struct Node* Node_list, struct Node* 
         Insertion_Sort(Node_list, n_diff_bytes);
 
     }
+
 }
+
 
 /**
  * @brief                       A recursive fonction used to visit the entire Huffman Tree once it's been constructed, so that we can get 
@@ -285,10 +320,10 @@ void Visit_Tree_To_Get_Encoding(struct Node Node_to_visit, unsigned short conver
         //conversion_array[i][0] is the size (in bits) of the code, and conversion_array[i][1] is the code in itself
         conversion_array[(int) (Node_to_visit.byte)][0] = n_bits_curr_bit_code;
         conversion_array[(int) (Node_to_visit.byte)][1] = binary_code;
-
-        //printf("\n %u : coded in %d bits : %d", Node_to_visit.byte, n_bits_curr_bit_code, binary_code);
     }
+
 }
+
 
 /**
  * @brief                   Convert each byte of the file into its compressed form and write the whole into the compressed file
@@ -300,7 +335,7 @@ void Visit_Tree_To_Get_Encoding(struct Node Node_to_visit, unsigned short conver
 void Write_Encoded_To_File(int size_of_file, unsigned char* bytes, unsigned short conversion_array[256][2]) {
 
     FILE* output_file;
-    output_file = fopen("encoded.bin", "wb");
+    output_file = fopen("../compressed/encoded.bin", "wb");
 
 
     //Set buffer to 00000000
@@ -352,7 +387,9 @@ void Write_Encoded_To_File(int size_of_file, unsigned char* bytes, unsigned shor
     }
 
     fclose(output_file);
+
 }
+
 
 /**
  * @brief   Read from file_to_compress.txt the name of the file to compress, open this file and read its bytes. 
@@ -365,31 +402,25 @@ void Write_Encoded_To_File(int size_of_file, unsigned char* bytes, unsigned shor
 int main()
 {
 
-    FILE* filename_file = fopen("file_to_compress.txt", "r");
+    //Open the file created by the python program that tells which file should we compress
+    FILE* filename_file = fopen("../compressed/file_to_compress.txt", "r");
+    if (filename_file == NULL) {
+        printf("\nFile failed to open");
+    }
     char* filename;
     fscanf(filename_file, "%s", filename);
 
-    //By default, we consider that the file is a png file
-    //Otherwise, the file file_to_compress.txt should contain :
-    // 0 for bin
-    // 1 for png
-    // 2 for jpg
-    // 3 for bmp
-    // 4 for arw (raw image)
-    // 5 for gif
-    // 6 for tif
-    //Example (in file_to_compress_txt) : "image.jpg 2"
-    //Here, 49 is the ascii value for '1'
-    char file_type = 49;
-    /*
-    fgetc(filename_file);
-    char file_type = fgetc(filename_file);
-    */
+    //Write the name of the file we've compressed in a text file
+    Write_Filename(filename);
+
 
     fclose(filename_file);
 
+    //Generate the correct path to the file to compress and open it in read mode
+    char path[] = "../gallery/";
+    strcat(path, filename);
 
-    FILE* fp = fopen(filename, "rb");
+    FILE* fp = fopen(path, "rb");
 
 
     //Get the byte length of the file
@@ -418,7 +449,7 @@ int main()
 
     Bubble_Sort(n_diff_bytes, diff_bytes, frequencies);
     
-    Write_Compression_File(n_diff_bytes, file_type, diff_bytes, frequencies);
+    Write_Compression_File(n_diff_bytes, diff_bytes, frequencies);
  
     //Creates the list of Nodes to add into the tree
     struct Node* Node_list = (struct Node*) calloc(n_diff_bytes, sizeof(struct Node));
