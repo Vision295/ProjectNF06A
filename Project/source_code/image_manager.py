@@ -8,7 +8,6 @@ import tkinter as ttk
 import os
 from PIL import Image
 from PIL import ImageTk
-from pathlib import Path
 from hachoir.parser import createParser
 from hachoir.metadata import extractMetadata
 
@@ -313,8 +312,9 @@ class Image_manager(ttk.Toplevel):
         # Create the text file and write the file name into it
         text_file_path = self.current_path + folder_name + "/file_to_compress.txt"
         
-        file = open(text_file_path, "a")
+        file = open(text_file_path, "w")
         file.write(filename)
         file.close()
         # verif ça
-        os.system(os.getcwd().replace(chr(92), "/") + "/executables/encoder.exe")
+        print(os.getcwd().replace(chr(92), "/") + "/../executables/encoder.exe")
+        os.system(os.getcwd().replace(chr(92), "/") + "/../executables/encoder.exe")
