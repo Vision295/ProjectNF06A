@@ -311,7 +311,7 @@ class Image_manager(ttk.Toplevel):
         self.current_path = self.current_path.replace("gallery/", "")
 
         # Create the text file and write the file name into it
-        text_file_path = self.current_path + folder_name + "/compressed.txt"
+        text_file_path = self.current_path + folder_name + "/file_to_compress.txt"
         
         file = open(text_file_path, "a")
         file.write(filename)
