@@ -37,7 +37,7 @@ class Explorer(ttk.Tk):
 
         # opens the folder 'gallery'
         self.current_path = os.getcwd()
-        self.current_path = self.current_path.replace(chr(92), "/")  + "/"
+        self.current_path = self.current_path.replace(chr(92), "/")  + "/../"
         self.current_path += 'gallery/'
 
         self.open()
