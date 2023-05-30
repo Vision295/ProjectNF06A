@@ -1,0 +1,6 @@
+- localiser le current folder sur __init__ explorer           ACHIEVED
+- stocker le nom du fichier, l'image à compresser dans system ACHIEVED
+- créer fonction décompresser                                 ACHIEVED
+- faire la doc correctement
+- faire todo list
+- diapo

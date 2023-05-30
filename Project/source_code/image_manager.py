@@ -302,20 +302,20 @@ class Image_manager(ttk.Toplevel):
         while filename[-1] != '/' : filename += tempList_current_path.pop()
         filename = filename.replace('/', '')
         filename = filename[::-1]
-        folder_name = filename + "compressed/"
+        folder_name = "compressed"
 
         self.current_path = ''
         for i in tempList_current_path : self.current_path += i
         # add a slash for it to be readable
         self.current_path += '/'
-
-        if not os.path.exists(self.current_path + folder_name):
-            os.mkdir(self.current_path + folder_name)
+        self.current_path = self.current_path.replace("gallery/", "")
 
         # Create the text file and write the file name into it
-        text_file_path = self.current_path + folder_name + "compressed.txt"
+        text_file_path = self.current_path + folder_name + "/compressed.txt"
         
         file = open(text_file_path, "a")
         file.write(filename)
         file.close()
-        self.image.save(self.current_path + folder_name + filename)
+        self.image.save(self.current_path + folder_name + "/" + filename)
+        # verif ça
+        os.system(os.getcwd().replace(chr(92), "/") + "/Dexecutables/encoder.exe")
