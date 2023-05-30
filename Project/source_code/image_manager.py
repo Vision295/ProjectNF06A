@@ -318,4 +318,4 @@ class Image_manager(ttk.Toplevel):
         file.close()
         self.image.save(self.current_path + folder_name + "/" + filename)
         # verif ça
-        os.system(os.getcwd().replace(chr(92), "/") + "/Dexecutables/encoder.exe")
+        os.system(os.getcwd().replace(chr(92), "/") + "/executables/encoder.exe")
