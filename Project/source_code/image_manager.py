@@ -316,5 +316,4 @@ class Image_manager(ttk.Toplevel):
         file.write(filename)
         file.close()
         # verif ça
-        print(os.getcwd().replace(chr(92), "/") + "/../executables/encoder.exe")
         os.system(os.getcwd().replace(chr(92), "/") + "/../executables/encoder.exe")
