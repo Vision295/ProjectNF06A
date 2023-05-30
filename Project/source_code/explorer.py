@@ -78,6 +78,7 @@ class Explorer(ttk.Tk):
         # menu button to open a folder
         self.menu_file = ttk.Menu(self.menu, tearoff=0)
         self.menu_file.add_command(label="Back", command=self.back)
+        self.menu_file.add_command(label="Decompress", command=self.decompress)
         self.menu.add_cascade(label="Control", menu=self.menu_file)
         self.config(menu=self.menu)
 
@@ -154,3 +155,5 @@ class Explorer(ttk.Tk):
         self.current_path += '/'
         self.open()
         return temp
+
+    def decompress(self) -> None : os.system(os.getcwd().replace(chr(92), "/") + "/../executables/decoder.exe")

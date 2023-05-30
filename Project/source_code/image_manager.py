@@ -78,7 +78,6 @@ class Image_manager(ttk.Toplevel):
         self.image_menu_edit.add_command(label="Predefined filter", command=self.predefined_filters_window)
         # compress
         self.image_menu_edit.add_command(label="Compress", command=self.compress)
-        self.image_menu_edit.add_command(label="Decompress", command=self.decompress)
         # option to edit image
         self.image_menu.add_cascade(label="Edit", menu=self.image_menu_edit)
         # option to show metadata
@@ -318,5 +317,3 @@ class Image_manager(ttk.Toplevel):
         file.close()
         # verif ça
         os.system(os.getcwd().replace(chr(92), "/") + "/../executables/encoder.exe")
-
-    def decompress(self) -> None : os.system(os.getcwd().replace(chr(92), "/") + "/../executables/decoder.exe")
