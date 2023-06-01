@@ -1,6 +1,6 @@
 import tkinter as ttk
 import os
-from image_manager import Image_manager
+from source_code.image_manager import Image_manager
 
 ##
 # @class         Explorer 
@@ -37,8 +37,7 @@ class Explorer(ttk.Tk):
 
         # opens the folder 'gallery'
         self.current_path = os.getcwd()
-        self.current_path = self.current_path.replace(chr(92), "/")
-        self.current_path += "/../gallery/"
+        self.current_path = self.current_path.replace(chr(92), "/") + "/../../gallery/"
 
         self.open()
 

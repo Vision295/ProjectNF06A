@@ -12,19 +12,18 @@ from hachoir.parser import createParser
 from hachoir.metadata import extractMetadata
 
 ##
-# @class Image_manager 
-# used to create a window which is opennend when the users clicks on 
-# an image to preview it
-# @param Tk inherits from the Toplevel class which is a child of Tk
+# @class Image_manager      used to create a window which is opennend when the users clicks on 
+#                           an image to preview it
+# @param Tk                 inherits from the Toplevel class which is a child of Tk
 # 
 
 class Image_manager(ttk.Toplevel):
     ##
-    # @brief Constructor of Image_manager 
+    # @brief               Constructor of Image_manager 
+    # @param _current_path is to get the path in order to go back in hierarchy 
+    #                      when image is closed
     def __init__(self, _current_path:str) -> None:
-        """creates a window to preview the image 
-        @param _current_path is to get the path in order to go back in hierarchy 
-        when image is closed"""
+        """creates a window to preview the image"""
         # initialize the tkinter super class
         ttk.Toplevel.__init__(self)
 
@@ -40,6 +39,8 @@ class Image_manager(ttk.Toplevel):
 
         self.open_image_png()
 
+    ##
+    # @brief        function run when the image window is created to load an image on it       
     def open_image_png(self) -> None:
         """function run when the image window is created to load an image on it"""
         self.resize_image_to_fit()
@@ -49,12 +50,14 @@ class Image_manager(ttk.Toplevel):
         self.label_image = ttk.Label(self, image=self.image_load) 
         self.label_image.pack()
 
+        # loads menu and mainloop
         self.create_menu()
         self.mainloop()
 
+    ##
+    # @brief        function run in the open_image_png function to make it fit within the size of the window
     def resize_image_to_fit(self) -> None:
         """function run in the open_image_png function to make it fit within the size of the window"""
-
         # reduce the size of the image for it to fit within the size of the the window and fill it as much as possible
         if self.image_width > self.image_height:
             self.modified_image_size = (self.window_size, int(self.image_height * self.window_size / self.image_width))
@@ -62,7 +65,9 @@ class Image_manager(ttk.Toplevel):
             self.modified_image_size = (self.window_size, int(self.image_height * self.window_size / self.image_width))
         # create a new image with resized dimensions
         self.modified_image_to_fit = self.image.resize(self.modified_image_size)
-
+    
+    ##
+    # @brief        function run in the open_image_png function to create a menu
     def create_menu(self) -> None:
         """function run in the open_image_png function to create a menu"""
 
@@ -84,9 +89,11 @@ class Image_manager(ttk.Toplevel):
         self.image_menu_info.add_command(label="Metadata", command=self.metadata)
         # options to show info
         self.image_menu.add_cascade(label="Info", menu=self.image_menu_info)
-
+        # configure the image_menu as the menu of the main window
         self.config(menu=self.image_menu)
 
+    ##
+    # @brief        function used to resize the image currently openned by openning a new window to select the size
     def resize_window(self) -> None:
         """function used to resize the image currently openned by openning a new window to select the size"""
 
@@ -119,6 +126,8 @@ class Image_manager(ttk.Toplevel):
         # update edit_image_window
         self.edit_image_window.mainloop()
 
+    ##
+    # @brief        function to change the scale of the image and saves the modified image as the name of the image + resized.png
     def change_size_values(self) -> None:
         """function to change the scale of the image and saves the modified image as the name of the image + resized.png"""
 
@@ -133,6 +142,8 @@ class Image_manager(ttk.Toplevel):
         self.edit_image_window.destroy()
         self.destroy()
 
+    ##
+    # @brief        function run to display on screen the metadata of a png image
     def metadata(self) -> None:
         """function run to display on screen the metadata of a png image"""
 
@@ -154,6 +165,11 @@ class Image_manager(ttk.Toplevel):
         self.metadata_text_zone.insert(ttk.INSERT, self.metadata_text)
         self.metadata_text_zone.grid(row=0, column=0)
 
+    ##
+    # @brief            function used to change the value rgb of a pixel by applying a filter
+    # @param _old_px    is the rgb values of the pixel
+    # @param _mask      is the filter to apply to each pixel
+    # @return           is a tuple which corresponds to a modified pixel
     def get_new_pixel(self, _old_px:list, _mask:list) -> tuple:
         """function used to change the value rgb of a pixel by applying a filter
         @param _old_px is the rgb values of the pixel
@@ -165,6 +181,9 @@ class Image_manager(ttk.Toplevel):
             int(_old_px[0] * _mask[2][0] + _old_px[1] * _mask[2][1] + _old_px[2] * _mask[2][2])
         )
     
+    ## 
+    # @brief            applies a predefined filter is run when the button filter is pressed and calls the method 'apply_custom_filter'
+    #                   to apply a custom filter with fixed parameters depending on the predefined filter
     def apply_predefined_filter(self) -> None:
         # intensity of the filter (could be modified later on to add another fonctionnality)
         self.intensity = 1/3
@@ -192,7 +211,10 @@ class Image_manager(ttk.Toplevel):
             self.edit_image_window.destroy()
             self.destroy()
 
-    def apply_custom_filter(self, _mask:tuple) -> None:
+    ## 
+    # @brief            applies a custom filter depending on the parameters enterred by the user
+    # @param _mask      is the filter to apply to each pixel (corresponds to the parameter enterred by the user)
+    def apply_custom_filter(self, _mask) -> None:
         """function run when the button "filter" is pressed to apply a custom
         filter
         @param _mask is the filter to apply to each pixel"""
@@ -214,6 +236,8 @@ class Image_manager(ttk.Toplevel):
         self.edit_image_window.destroy()
         self.destroy()
 
+    ##
+    # @brief            function used to apply a custom filter to the image currently openned by openning a new window to select the size
     def custom_filters_window(self) -> None:
         """function used to apply a custom filter to the image currently openned by openning a new window to select the size"""
         # creation of the window to rescale the image
@@ -242,6 +266,8 @@ class Image_manager(ttk.Toplevel):
         # update edit_image_window
         self.edit_image_window.mainloop()
 
+    ##
+    # @brief            function used to apply a custom filter to the image currently openned by openning a new window to select the size
     def predefined_filters_window(self) -> None:
         """function used to apply a custom filter to the image currently openned by openning a new window to select the size"""
         # creation of the window to rescale the image
@@ -276,8 +302,12 @@ class Image_manager(ttk.Toplevel):
         # update edit_image_window
         self.edit_image_window.mainloop()
 
+    ##
+    # @brief            function to get the choice of the user
     def get_predefined_filter(self) -> None : self.selected_filter = self.choice.get(); self.apply_predefined_filter()
 
+    ##
+    # @brief            function to store the values of enterred by the user to create a custom filter in self.filter_values
     def get_custom_filter(self) -> None: 
         """function to store the values of enterred by the user to create a custom
         filter in self.filter_values"""
@@ -291,6 +321,8 @@ class Image_manager(ttk.Toplevel):
         self.filter_values = tuple(tuple(i) for i in self.filter_values)
         self.apply_custom_filter(_mask=self.filter_values)
 
+    ##
+    # @brief            function to compress an openned image and save the compress version in a folder : 'compressed'
     def compress(self) -> None:
         """function to compress an openned image and save the compress version in a folder"""
         # Create the folder if it doesn't exist
@@ -316,4 +348,4 @@ class Image_manager(ttk.Toplevel):
         file.write(filename)
         file.close()
         # verif ça
-        os.system(os.getcwd().replace(chr(92), "/") + "/../executables/encoder.exe")
+        os.system(os.getcwd().replace(chr(92), "/") + "/../../executables/encoder.exe")
