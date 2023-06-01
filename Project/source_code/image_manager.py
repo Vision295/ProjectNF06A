@@ -171,10 +171,7 @@ class Image_manager(ttk.Toplevel):
     # @param _mask      is the filter to apply to each pixel
     # @return           is a tuple which corresponds to a modified pixel
     def get_new_pixel(self, _old_px:list, _mask:list) -> tuple:
-        """function used to change the value rgb of a pixel by applying a filter
-        @param _old_px is the rgb values of the pixel
-        @param _mask is the filter to apply to each pixel
-        @return is a tuple which corresponds to a modified pixel"""
+        """function used to change the value rgb of a pixel by applying a filter"""
         return (
             int(_old_px[0] * _mask[0][0] + _old_px[1] * _mask[0][1] + _old_px[2] * _mask[0][2]),
             int(_old_px[0] * _mask[1][0] + _old_px[1] * _mask[1][1] + _old_px[2] * _mask[1][2]),

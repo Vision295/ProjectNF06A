@@ -402,7 +402,7 @@ int main()
 {
 
     //Open the file created by the python program that tells which file should we compress
-    FILE* filename_file = fopen("../compressed/file_to_compress.txt", "r");
+    FILE* filename_file = fopen("../../compressed/file_to_compress.txt", "r");
     if (filename_file == NULL) {
         printf("\nFile failed to open");
     }
