@@ -13,15 +13,24 @@ As this project doesn't have yet executable files to launch the interface, you s
 Make sure the necessary python libraries are installed in your environment.
 
 
+
 ---
+
 
 
 Includes:
+
 `pip install PIL`
+
 `pip install tkinter`
+
 `pip install hachoir`
 
+
+
 ---
+
+
 
 *Note :* You can manually use the Huffman Coding Algorithm by placing any file in the "gallery" folder, writing its name in encoded/file_to_encode.txt and launching "executables/encoder.exe"
 
