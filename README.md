@@ -18,14 +18,16 @@ Make sure the necessary python libraries are installed in your environment.
 
 
 Includes:  
+  
+    
 `pip install PIL`
 
 `pip install tkinter`
 
 `pip install hachoir`
-
-
-
+  
+  
+  
 ---
 
 
