@@ -1,4 +1,4 @@
-# **<span style="color:red">tPhoto Studio</span>** Project
+# **Photo Studio** Project
 NF06 P23 Project by:
 
 -*Théophile Wachtel*  
